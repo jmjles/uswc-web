@@ -1,0 +1,52 @@
+.Home .PlayerContainer {
+  max-width: 1200px;
+  margin-right: auto;
+  margin-left: auto;
+  height: 70vh;
+}
+
+.Home .PlayerContainer iframe {
+  width: 100%;
+  height: 100%;
+  padding: 0px 20px;
+}
+
+.Home section {
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.Header {
+  background-color: #292f36;
+}
+
+.Header :first-child {
+  margin-right: auto;
+}
+
+.Header .Menu {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px 20px;
+}
+
+.Browse .FeaturedGrid .FeaturedVideoImgContainer .FeaturedVideoImg {
+  width: 100%;
+  height: 60vh;
+}
+
+.Browse .Grid .VideoImgContainer {
+  padding: 10px;
+  display: inline-block;
+  width: 25%;
+}
+
+.Browse .Grid .VideoImgContainer .VideoImg {
+  width: 100%;
+  height: 150px;
+}
+/*# sourceMappingURL=index.css.map */

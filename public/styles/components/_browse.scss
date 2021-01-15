@@ -1,0 +1,21 @@
+.Browse {
+  .FeaturedGrid {
+    .FeaturedVideoImgContainer {
+      .FeaturedVideoImg {
+        width: 100%;
+        height: 60vh;
+      }
+    }
+  }
+  .Grid {
+    .VideoImgContainer {
+      padding: 10px;
+      display: inline-block;
+      width: 25%;
+      .VideoImg {
+        width: 100%;
+        height: 150px;
+      }
+    }
+  }
+}

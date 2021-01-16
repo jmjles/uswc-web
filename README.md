@@ -1,4 +1,4 @@
 # U.S. Weed Channel  
 [Live Site](https://usweedchannel.com)
 
-## Production Site viewable by everyone
+## Development Site viewable by team

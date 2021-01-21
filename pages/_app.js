@@ -48,13 +48,14 @@ const App = ({ Component, pageProps }) => {
                 pictures: video.pictures,
                 desc: video.description,
                 name: video.name,
+                key: video.resource_key
               });
               break;
             }
           }
         });
         setList(tempList);
-        setVideos(res.data.data);
+        setVideos(res.data);
         setVideoLoading(false);
       } catch (er) {
         console.log(er.message);

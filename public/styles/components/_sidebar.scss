@@ -1,0 +1,22 @@
+.Sidebar {
+  position: absolute;
+  top: 80.50;
+  right: 0;
+  width: 0px;
+  overflow: hidden;
+  background-color: $darkBackground;
+  height: 100%;
+  z-index: 99;
+  div{
+    margin-bottom: 20px;
+    div:first-child{
+      margin-top: 20px;
+    }
+    div Button {
+      min-width: 125px;
+    }
+  }
+  @include tablet{
+    display: none;
+  }
+}

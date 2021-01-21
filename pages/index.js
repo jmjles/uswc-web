@@ -15,35 +15,56 @@ export default function Home() {
         <div className="PlayerContainer">
           <iframe
             src="https://player.vimeo.com/video/392824756"
-            frameborder="0"
+            frameBorder="0"
             allow="autoplay; fullscreen"
-            allowfullscreen
+            allowFullScreen
           />
         </div>
 
         <section>
           <Font variant="h1">We're doing for weed, what MTV did for music</Font>
           <Link href="/browse">
-            <Button variant="contained">
+            <Button variant="contained" color="primary">
               <Font variant="button">Explore Our Channel</Font>
             </Button>
           </Link>
         </section>
 
-        <Grid container md justify="space-around" component="section">
-          <Grid item>
+        <Grid container justify="space-around" component="section">
+          <Grid
+            item
+            xs={12}
+            sm={3}
+            container
+            direction="column"
+            alignContent="center"
+          >
             <img src={weedIcon} />
             <Font align="center" variant="h5">
               Subscribe
             </Font>
           </Grid>
-          <Grid item>
+          <Grid
+            item
+            xs={12}
+            sm={3}
+            container
+            direction="column"
+            alignContent="center"
+          >
             <img src={weedIcon} />
             <Font align="center" variant="h5">
               Advertise
             </Font>
           </Grid>
-          <Grid item>
+          <Grid
+            item
+            xs={12}
+            sm={3}
+            container
+            direction="column"
+            alignContent="center"
+          >
             <img src={weedIcon} />
             <Font align="center" variant="h5">
               Broadcast

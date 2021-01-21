@@ -1,4 +1,8 @@
 .Header {
+  width: 100%;
+  img {
+    width: 150px;
+  }
   :first-child {
     margin-right: auto;
   }
@@ -7,6 +11,17 @@
     margin-left: auto;
     margin-right: auto;
     padding: 0px 20px;
+    .TabletMenu {
+      display: none;
+      @include tablet {
+        display: inherit;
+      }
+    }
+    @include tablet {
+      .MobileOnly {
+        display: none;
+      }
+    }
   }
   background-color: $darkBackground;
 }

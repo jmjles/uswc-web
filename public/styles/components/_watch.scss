@@ -1,0 +1,20 @@
+.Watch {
+  .PlayerContainer {
+    max-width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+    height: calc(56vw);
+    max-height: 652.5px;
+    iframe {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  section {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}

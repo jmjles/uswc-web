@@ -6,3 +6,8 @@
 @import "./components/browse";
 @import "./components/watch";
 @import "./components/sidebar";
+
+.PageLayout {
+  min-height: 100vh;
+  height: -webkit-fill-available;
+}

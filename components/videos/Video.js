@@ -11,10 +11,10 @@ const Video = ({ video }) => {
     <div className="VideoImgContainer">
       <img
         className="VideoImg"
-        src={video.pictures.sizes[5].link}
+        src={video ? video.pictures.sizes[5].link : null}
         onClick={handleClick}
       />
-      <Font>{video.name}</Font>
+      <Font>{video ? video.name : null}</Font>
     </div>
   );
 };

@@ -18,7 +18,7 @@ const Category = ({ title, videos }) => {
   useEffect(() => {
     let list = [];
     const makeList = (num) => {
-      for (let i = 1; i <= num; i++) {
+      for (let i = 0; i < num; i++) {
         if (!videos[lastVid + i]) break;
         list.push(videos[lastVid + i]);
       }
@@ -71,7 +71,7 @@ const Category = ({ title, videos }) => {
           <div
             id="prev"
             onClick={() => handleNav("prev")}
-            style={prevVis ? {} : styles.hidden}
+            style={!prevVis ? styles.hidden : null}
           >
             <NavigateBefore color="primary" onClick={() => handleNav("prev")} />
           </div>
@@ -81,7 +81,7 @@ const Category = ({ title, videos }) => {
           <div
             id="next"
             onClick={() => handleNav("next")}
-            style={nextVis ? {} : styles.hidden}
+            style={!nextVis ? styles.hidden : null}
           >
             <NavigateNext color="primary" onClick={() => handleNav("next")} />
           </div>

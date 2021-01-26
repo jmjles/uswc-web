@@ -1,3 +1,15 @@
+.PageLayout {
+  min-height: 100vh;
+}
+
+.PageLayout section {
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .Home {
   text-align: center;
 }
@@ -17,14 +29,6 @@
 .Home .PlayerContainer iframe {
   width: 100%;
   height: 100%;
-}
-
-.Home section {
-  width: 100%;
-  max-width: 1200px;
-  padding: 20px;
-  margin-right: auto;
-  margin-left: auto;
 }
 
 .Header {
@@ -67,9 +71,76 @@ footer {
   margin-top: auto;
 }
 
+.Browse section {
+  max-width: initial;
+  padding: 0 0 20px;
+}
+
+.Browse .FeaturedGrid .wrap {
+  position: relative;
+}
+
+.Browse .FeaturedGrid .wrap #next {
+  position: relative;
+  height: 100%;
+  right: 0;
+  top: 0;
+  width: 5%;
+  min-width: 20px;
+  max-width: 60px;
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  z-index: 20;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.Browse .FeaturedGrid .wrap #next svg {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.Browse .FeaturedGrid .wrap #prev {
+  height: 100%;
+  left: 0;
+  top: 0;
+  width: 5%;
+  min-width: 20px;
+  max-width: 60px;
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  vertical-align: middle;
+  z-index: 20;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.Browse .FeaturedGrid .wrap #prev svg {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
 .Browse .FeaturedGrid .FeaturedVideoImgContainer .FeaturedVideoImg {
   width: 100%;
-  height: 80vh;
+  max-height: 70vh;
 }
 
 .Browse .Grid .wrap {
@@ -81,7 +152,9 @@ footer {
   height: 100%;
   right: 0;
   top: 0;
-  width: 3%;
+  width: 5%;
+  min-width: 20px;
+  max-width: 60px;
   position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -107,7 +180,9 @@ footer {
   height: 100%;
   left: 0;
   top: 0;
-  width: 3%;
+  width: 5%;
+  min-width: 20px;
+  max-width: 60px;
   position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -136,6 +211,12 @@ footer {
   width: 50%;
 }
 
+.Browse .Grid .VideoImgContainer p {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
 @media (min-width: 700px) {
   .Browse .Grid .VideoImgContainer {
     width: 25%;
@@ -144,6 +225,13 @@ footer {
 
 .Browse .Grid .VideoImgContainer .VideoImg {
   width: 100%;
+  height: 150px;
+}
+
+@media (min-width: 1200px) {
+  .Browse .Grid .VideoImgContainer .VideoImg {
+    height: 200px;
+  }
 }
 
 .Watch .PlayerContainer {
@@ -157,14 +245,6 @@ footer {
 .Watch .PlayerContainer iframe {
   width: 100%;
   height: 100%;
-}
-
-.Watch section {
-  width: 100%;
-  max-width: 1200px;
-  padding: 20px;
-  margin-right: auto;
-  margin-left: auto;
 }
 
 .Sidebar {
@@ -194,10 +274,5 @@ footer {
   .Sidebar {
     display: none;
   }
-}
-
-.PageLayout {
-  min-height: 100vh;
-  height: -webkit-fill-available;
 }
 /*# sourceMappingURL=index.css.map */

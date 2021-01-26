@@ -6,7 +6,10 @@ const browse = ({ list, videoLoading }) => {
   return (
     <Page>
       <div className="Browse">
-        <CircularProgress style={!videoLoading && style.hidden} size={50} />
+        <div style={!videoLoading ? style.hidden : style.progress}>
+          <CircularProgress size={50} />
+        </div>
+
         {list.map((entry) => {
           if (entry.title === "Featured") {
             return <Featured videos={entry.videos} />;
@@ -21,6 +24,11 @@ const browse = ({ list, videoLoading }) => {
 const style = createStyles({
   hidden: {
     display: "none",
+  },
+  progress: {
+    width: "100%",
+    textAlign: "center",
+    marginTop: "40px",
   },
 });
 export default browse;

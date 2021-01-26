@@ -1,62 +1,83 @@
+@mixin GridLayout {
+  .wrap {
+    position: relative;
+    #next {
+      position: relative;
+      height: 100%;
+      right: 0;
+      top: 0;
+      width: 5%;
+      min-width: 20px;
+      max-width: 60px;
+      position: absolute;
+      display: flex;
+      flex-flow: column wrap;
+      align-content: center;
+      z-index: 20;
+      background-color: hsla(0, 0, 0, 0.7);
+      svg {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+    #prev {
+      height: 100%;
+      left: 0;
+      top: 0;
+      width: 5%;
+      min-width: 20px;
+      max-width: 60px;
+      position: absolute;
+      display: flex;
+      flex-flow: column wrap;
+      align-content: center;
+      vertical-align: middle;
+      z-index: 20;
+      background-color: hsla(0, 0, 0, 0.7);
+      svg {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+}
+
 .Browse {
+  section {
+    max-width: initial;
+    padding: 0 0 20px;
+  }
   .FeaturedGrid {
+    @include GridLayout();
     .FeaturedVideoImgContainer {
       .FeaturedVideoImg {
         width: 100%;
-        height: 80vh;
+        max-height: 70vh;
       }
     }
   }
   .Grid {
-    .wrap {
-      position: relative;
-      #next {
-        position: relative;
-        height: 100%;
-        right: 0;
-        top: 0;
-        width: 3%;
-        position: absolute;
-        display: flex;
-        flex-flow: column wrap;
-        align-content: center;
-        z-index: 20;
-        background-color: hsla(0, 0, 0, 0.7);
-        svg{
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-        }
-      }
-      #prev {
-        height: 100%;
-        left: 0;
-        top: 0;
-        width: 3%;
-        position: absolute;
-        display: flex;
-        flex-flow: column wrap;
-        align-content: center;
-        vertical-align: middle;
-        z-index: 20;
-        background-color: hsla(0, 0, 0, 0.7);
-        svg{
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-        }
-      }
-    }
-
+    @include GridLayout();
     .VideoImgContainer {
       padding: 10px;
       display: inline-block;
       width: 50%;
+      p {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
       @include tablet {
         width: 25%;
       }
       .VideoImg {
         width: 100%;
+        height: 150px;
+        @include Desktop {
+          height: 200px;
+        }
       }
     }
   }

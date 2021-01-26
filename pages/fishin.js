@@ -1,7 +1,7 @@
 import Wip from "../components/Wip";
 import Page from "../layout/Page";
 
-const getStarted = () => {
+const Fishin = () => {
     return (
         <Page>
             <Wip/>
@@ -9,4 +9,4 @@ const getStarted = () => {
     );
 }
 
-export default getStarted;
+export default Fishin;

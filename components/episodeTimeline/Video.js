@@ -6,17 +6,16 @@ const Video = ({ vid }) => {
   return (
     <div className="VideoImgContainer">
       {vid && (
-        <><img
-          className="VideoImg"
-          src={vid.pictures.sizes[5].link}
-          onClick={handleClick}
-        />
-        <Font>{vid.name}</Font>
+        <>
+          <Font>{vid.placement}</Font>
+          <img
+            className="VideoImg"
+            src={vid.pictures.sizes[5].link}
+            onClick={handleClick}
+          />
+          <Font>{vid.name}</Font>
         </>
-        
       )}
-
-      
     </div>
   );
 };

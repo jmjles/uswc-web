@@ -5,8 +5,10 @@ import {
   Typography as Font,
 } from "@material-ui/core";
 import Link from "next/link";
+import { useEffect } from "react";
 import Page from "../layout/Page";
-
+import { Waypoint } from "react-waypoint";
+import { fadeIn } from "../util/animations";
 export default function Home() {
   const weedIcon = "/img/weed-icon.png";
   return (
@@ -30,7 +32,13 @@ export default function Home() {
           </Link>
         </section>
 
-        <Grid container justify="space-around" component="section">
+        
+        <Grid
+          container
+          justify="space-around"
+          component="section"
+          id="services"
+        >
           <Grid
             item
             xs={12}
@@ -71,6 +79,7 @@ export default function Home() {
             </Font>
           </Grid>
         </Grid>
+        <Waypoint onEnter={() => fadeIn("#services")} />
         <section>
           <Font variant="h3">Get USWC On Your Favorite Device!</Font>
           <a href="https://channelstore.roku.com/details/b159518835b63c14c8ddb1d97e48a630/us-weed-channel">

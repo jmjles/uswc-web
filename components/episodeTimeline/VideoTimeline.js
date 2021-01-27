@@ -6,6 +6,9 @@ const VideoTimeline = ({ ep: [ep, setEp], series }) => {
   useEffect(() => {
     let prev = series[ep - 1];
     let next = series[ep + 1];
+    prev && (prev.placement = "Previously");
+    next && (next.placement = "Next");
+    series[ep] && (series[ep].placement = "Now Playing");
     setVids([prev, series[ep], next]);
   }, [ep, series]);
   return (

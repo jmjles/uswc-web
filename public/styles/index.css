@@ -75,6 +75,10 @@ footer {
   margin-top: auto;
 }
 
+.Browse {
+  overflow-x: hidden;
+}
+
 .Browse section {
   max-width: initial;
   padding: 0 0 20px;

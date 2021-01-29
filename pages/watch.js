@@ -21,7 +21,7 @@ const Watch = ({ videoLoading, videos }) => {
     if (id !== videoKey) {
       setVideoKey(id);
     }
-  }, [videoKey]);
+  }, [videoKey,currentEp]);
 
   useEffect(() => {
     const id = localStorage.getItem("vidId");

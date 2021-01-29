@@ -10,6 +10,41 @@
   margin-left: auto;
 }
 
+.LegalModal {
+  background-color: #292f36;
+  color: #FFF;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  text-align: center;
+  padding: 20px;
+}
+
+.LegalModal svg {
+  margin: 0 auto 10px;
+  font-size: 42px;
+}
+
+.LegalModal div {
+  text-align: left;
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
 .Home {
   text-align: center;
 }
@@ -72,7 +107,17 @@
 }
 
 footer {
-  margin-top: auto;
+  background-color: #292f36;
+  color: #fff;
+  text-align: right;
+}
+
+footer #socials {
+  font-size: 32px;
+}
+
+.Browse {
+  overflow-x: hidden;
 }
 
 .Browse section {
@@ -251,6 +296,15 @@ footer {
   height: 100%;
 }
 
+.Watch .TimeLine {
+  margin: 20px auto;
+  max-width: 1200px;
+}
+
+.Watch .TimeLine img {
+  width: 100%;
+}
+
 .Sidebar {
   position: absolute;
   top: 80.50;
@@ -278,5 +332,13 @@ footer {
   .Sidebar {
     display: none;
   }
+}
+
+.MCS img {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+  max-height: 60vh;
 }
 /*# sourceMappingURL=index.css.map */

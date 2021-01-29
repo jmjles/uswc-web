@@ -23,7 +23,7 @@ const Menu = () => {
     >
       <Grid item>
         <Link href="/">
-          <img src="/img/weed-logo.png" />
+          <img src="/img/uswc-logo.png" />
         </Link>
       </Grid>
       <Grid item className="TabletMenu">

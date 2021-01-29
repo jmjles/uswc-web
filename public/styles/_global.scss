@@ -8,3 +8,25 @@
     margin-left: auto;
   }
 }
+.LegalModal {
+    background-color: $darkBackground;
+    color: #FFF;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    flex-flow: column;
+    text-align: center;
+    padding: 20px;
+    svg{
+      margin: 0 auto 10px;
+      font-size: 42px;
+    }
+    div{
+      text-align: left;
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+  }

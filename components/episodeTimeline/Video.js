@@ -1,7 +1,13 @@
 import { Typography as Font } from "@material-ui/core";
-const Video = ({ vid }) => {
-  const handleClick = () => {
-    localStorage.setItem("vidId", vid.key);
+const Video = ({ vid, ep: [ep, setEp], series }) => {
+  const handleClick = (place) => {
+    if (place === "Previously") {
+      localStorage.setItem("vidId", series[ep - 1].resource_key);
+      setEp(ep - 1);
+    } else {
+      localStorage.setItem("vidId", series[ep + 1].resource_key);
+      setEp(ep + 1);
+    }
   };
   return (
     <div className="VideoImgContainer">
@@ -11,7 +17,10 @@ const Video = ({ vid }) => {
           <img
             className="VideoImg"
             src={vid.pictures.sizes[5].link}
-            onClick={handleClick}
+            onClick={
+              vid.placement !== "Now Playing" &&
+              (() => handleClick(vid.placement))
+            }
           />
           <Font>{vid.name}</Font>
         </>

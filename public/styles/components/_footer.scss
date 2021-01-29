@@ -1,3 +1,8 @@
 footer {
-  margin-top: auto;
+  background-color: $darkBackground;
+  color: #fff;
+  text-align: right;
+  #socials{
+    font-size: 32px;
+  }
 }

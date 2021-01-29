@@ -26,7 +26,7 @@ export default function Home() {
         <section>
           <Font variant="h1">We're doing for weed, what MTV did for music</Font>
           <Link href="/browse">
-            <Button variant="contained" color="primary">
+            <Button variant="contained" color="primary" size="large">
               <Font variant="button">Explore Our Channel</Font>
             </Button>
           </Link>

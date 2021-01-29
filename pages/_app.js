@@ -42,15 +42,30 @@ const App = ({ Component, pageProps }) => {
         const res = await vimeo("/");
         res.data.forEach((video) => {
           for (let x = 0; x < tempList.length; x++) {
-            if (tempList[x].title === video.parent_folder.name) {
-              tempList[x].videos.push({
-                uri: video.uri,
-                pictures: video.pictures,
-                desc: video.description,
-                name: video.name,
-                key: video.resource_key
-              });
-              break;
+            const isFirst = () => {
+              if (video.tags.length !== 0) {
+                for (const tag of video.tags) {
+                  const t = tag.name.split(":");
+                  console.log(t)
+                  if (t[0] === "ep" && parseInt(t[1]) === 1) {
+                    return true;
+                  }else if(t[0] === "ep" && parseInt(t[1]) !== 1) return false;
+                }
+                return true;
+              }
+              return false;
+            };
+            if (video.tags.length === 0 || isFirst()) {
+              if (tempList[x].title === video.parent_folder.name) {
+                tempList[x].videos.push({
+                  uri: video.uri,
+                  pictures: video.pictures,
+                  desc: video.description,
+                  name: video.name,
+                  key: video.resource_key,
+                });
+                break;
+              }
             }
           }
         });

@@ -1,3 +1,4 @@
+import { Grid } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import Video from "./Video";
 
@@ -12,11 +13,13 @@ const VideoTimeline = ({ ep: [ep, setEp], series }) => {
     setVids([prev, series[ep], next]);
   }, [ep, series]);
   return (
-    <section>
+    <Grid container className="TimeLine" justify="space-around">
       {vids.map((vid) => (
-        <Video ep={[ep, setEp]} vid={vid} />
+        <Grid item xs={3}>
+          <Video ep={[ep, setEp]} vid={vid} series={series} />
+        </Grid>
       ))}
-    </section>
+    </Grid>
   );
 };
 

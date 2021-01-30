@@ -32,7 +32,6 @@ export default function Home() {
           </Link>
         </section>
 
-        
         <Grid
           container
           justify="space-around"
@@ -52,19 +51,21 @@ export default function Home() {
               Subscribe
             </Font>
           </Grid>
-          <Grid
-            item
-            xs={12}
-            sm={3}
-            container
-            direction="column"
-            alignContent="center"
-          >
-            <img src={weedIcon} />
-            <Font align="center" variant="h5">
-              Advertise
-            </Font>
-          </Grid>
+          <Link href="/advertise">
+            <Grid
+              item
+              xs={12}
+              sm={3}
+              container
+              direction="column"
+              alignContent="center"
+            >
+              <img src={weedIcon} />
+              <Font align="center" variant="h5">
+                Advertise
+              </Font>
+            </Grid>
+          </Link>
           <Grid
             item
             xs={12}
@@ -79,7 +80,7 @@ export default function Home() {
             </Font>
           </Grid>
         </Grid>
-        <Waypoint onEnter={() => fadeIn("#services",true)} />
+        <Waypoint onEnter={() => fadeIn("#services", true)} />
         <section>
           <Font variant="h3">Get USWC On Your Favorite Device!</Font>
           <a href="https://channelstore.roku.com/details/b159518835b63c14c8ddb1d97e48a630/us-weed-channel">

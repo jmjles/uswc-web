@@ -35,7 +35,6 @@ export const fadeIn = (targets, once) => {
     anime({ targets, duration: 3000, opacity: [parseInt(op), 1] });
   }
 };
-fadeIn.p;
 export const fadeOut = (targets) => {
   const el = document.querySelector(targets);
   const op = anime.get(el, "opacity");

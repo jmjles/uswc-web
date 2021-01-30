@@ -110,6 +110,7 @@ footer {
   background-color: #292f36;
   color: #fff;
   text-align: right;
+  margin-top: 20px;
 }
 
 footer #socials {
@@ -340,5 +341,26 @@ footer #socials {
   margin: 0 auto;
   display: block;
   max-height: 60vh;
+}
+
+.Advertise {
+  text-align: center;
+}
+
+.Advertise button {
+  margin: 20px 0;
+}
+
+.Advertise .PlayerContainer {
+  max-width: 1200px;
+  margin-right: auto;
+  margin-left: auto;
+  height: calc(56vw);
+  max-height: 652.5px;
+}
+
+.Advertise .PlayerContainer iframe {
+  width: 100%;
+  height: 100%;
 }
 /*# sourceMappingURL=index.css.map */

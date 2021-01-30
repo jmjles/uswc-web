@@ -1,0 +1,17 @@
+.Advertise {
+    text-align:center;
+    button{
+        margin: 20px 0;
+    }
+   .PlayerContainer {
+    max-width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+    height: calc(56vw);
+    max-height: 652.5px;
+    iframe {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

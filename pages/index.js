@@ -79,7 +79,7 @@ export default function Home() {
             </Font>
           </Grid>
         </Grid>
-        <Waypoint onEnter={() => fadeIn("#services")} />
+        <Waypoint onEnter={() => fadeIn("#services",true)} />
         <section>
           <Font variant="h3">Get USWC On Your Favorite Device!</Font>
           <a href="https://channelstore.roku.com/details/b159518835b63c14c8ddb1d97e48a630/us-weed-channel">

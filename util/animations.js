@@ -22,14 +22,23 @@ export const sidebarAni = (handle) => {
     handle();
   }
 };
-export const fadeIn = (targets) => {
+const cashe = {};
+export const fadeIn = (targets, once) => {
   const el = document.querySelector(targets);
   const op = anime.get(el, "opacity");
-  if (parseInt(op) !== 1) anime({ targets, duration: 3000, opacity: [0, 1] });
+  if (once && cashe[targets]) {
+    return null;
+  } else if (once && !cashe[targets]) {
+    cashe[targets] = targets;
+    anime({ targets, duration: 3000, opacity: [parseInt(op), 1] });
+  } else {
+    anime({ targets, duration: 3000, opacity: [parseInt(op), 1] });
+  }
 };
-
+fadeIn.p;
 export const fadeOut = (targets) => {
   const el = document.querySelector(targets);
   const op = anime.get(el, "opacity");
-  if (parseInt(op) !== 1) anime({ targets, duration: 3000, opacity: [1, 0] });
+  if (parseInt(op) !== 1)
+    anime({ targets, duration: 3000, opacity: [parseInt(op), 0] });
 };

@@ -5,6 +5,7 @@ const FeaturedVideo = ({ video }) => {
     <div className="FeaturedVideoImgContainer">
       <img className="FeaturedVideoImg" src={video.pictures.sizes[5].link} />
       <Font>{video.name}</Font>
+      <div className="Overlay" />
     </div>
   );
 };

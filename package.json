@@ -12,6 +12,7 @@
     "animejs": "^3.2.1",
     "axios": "^0.21.1",
     "next": "latest",
+    "prop-types": "^15.7.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-waypoint": "^9.0.3"

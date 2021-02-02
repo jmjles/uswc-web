@@ -14,7 +14,8 @@ const Video = ({ video }) => {
         src={video ? video.pictures.sizes[5].link : null}
         onClick={handleClick}
       />
-      <Font>{video ? video.name : null}</Font>
+      <Font onClick={handleClick}>{video ? video.name : null}</Font>
+      <div className="Overlay" onClick={handleClick} />
     </div>
   );
 };

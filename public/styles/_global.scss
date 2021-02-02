@@ -1,5 +1,7 @@
 .PageLayout {
   min-height: 100vh;
+  position: relative;
+  padding-bottom: 150px;
   section {
     width: 100%;
     max-width: 1200px;
@@ -19,6 +21,13 @@
     flex-flow: column;
     text-align: center;
     padding: 20px;
+    width: 80%;
+    max-width: 245px;
+    border: 0px;
+    outline: none;
+    @include tablet{
+      width: initial;
+    }
     svg{
       margin: 0 auto 10px;
       font-size: 42px;

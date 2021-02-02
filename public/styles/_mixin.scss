@@ -1,0 +1,11 @@
+@mixin Fade($max, $time, $direction) {
+  animation: fade $time $direction;
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: $max;
+    }
+  }
+}

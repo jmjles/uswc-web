@@ -52,19 +52,19 @@ export default function Home() {
             </Font>
           </Grid>
           <Link href="/advertise">
-            <Grid
-              item
-              xs={12}
-              sm={3}
-              container
-              direction="column"
-              alignContent="center"
-            >
-              <img src={weedIcon} />
-              <Font align="center" variant="h5">
-                Advertise
-              </Font>
-            </Grid>
+          <Grid
+            item
+            xs={12}
+            sm={3}
+            container
+            direction="column"
+            alignContent="center"
+          >
+            <img src={weedIcon} />
+            <Font align="center" variant="h5">
+              Advertise
+            </Font>
+          </Grid>
           </Link>
           <Grid
             item

@@ -14,7 +14,7 @@ const Page = (props) => {
   }, []);
   const handleClose = () => {
     const legal = localStorage.getItem("ald");
-    legal ? setOpen(!open) : window.history.back();
+    legal ? setOpen(!open) : history.back();
   };
   const handleConfirm = () => {
     localStorage.setItem("ald", "true");

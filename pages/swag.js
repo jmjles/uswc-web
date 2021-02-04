@@ -3,7 +3,7 @@ import Page from "../layout/Page";
 
 const swag = () => {
   return (
-    <Page>
+    <Page title="Swag" className="Swag">
       <Wip />
     </Page>
   );

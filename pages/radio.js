@@ -6,16 +6,7 @@ const Radio = () => {
   return (
     <Page>
       <Head>
-        <script
-          language="javascript"
-          type="text/javascript"
-          src="https://epsilon.shoutca.st:2199/system/player.js"
-        />
-        <script
-          language="javascript"
-          type="text/javascript"
-          src="https://epsilon.shoutca.st:2199/system/streaminfo.js"
-        />
+        
       </Head>
       <section className="Radio">
         <a
@@ -36,6 +27,16 @@ const Radio = () => {
           Loading ...
         </div>
       </section>
+      <script
+          language="javascript"
+          type="text/javascript"
+          src="https://epsilon.shoutca.st:2199/system/player.js"
+        />
+        <script
+          language="javascript"
+          type="text/javascript"
+          src="https://epsilon.shoutca.st:2199/system/streaminfo.js"
+        />
     </Page>
   );
 };

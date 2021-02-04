@@ -21,7 +21,7 @@ const Watch = ({ videoLoading, videos }) => {
     if (id !== videoKey) {
       setVideoKey(id);
     }
-  }, [videoKey,currentEp]);
+  }, [videoKey, currentEp]);
 
   useEffect(() => {
     const id = localStorage.getItem("vidId");
@@ -64,25 +64,23 @@ const Watch = ({ videoLoading, videos }) => {
   }, [videoKey, videoLoading]);
 
   return (
-    <Page>
-      <div className="Watch">
-        <CircularProgress style={!videoLoading ? style.hidden : {}} />
-        <div className="PlayerContainer">
-          <iframe
-            src={uri}
-            width="100%"
-            height="600px"
-            allowFullScreen
-            frameBorder="0"
-            allow="fullscreen"
-          />
-        </div>
-        <section>
-          <Font variant="h2">{title}</Font>
-          <Font variant="body1">{selected.description}</Font>
-        </section>
-        <VideoTimeline series={series} ep={[currentEp, setCurrentEp]} />
+    <Page title="Watch" className="Watch">
+      <CircularProgress style={!videoLoading ? style.hidden : {}} />
+      <div className="PlayerContainer">
+        <iframe
+          src={uri}
+          width="100%"
+          height="600px"
+          allowFullScreen
+          frameBorder="0"
+          allow="fullscreen"
+        />
       </div>
+      <section>
+        <Font variant="h2">{title}</Font>
+        <Font variant="body1">{selected.description}</Font>
+      </section>
+      <VideoTimeline series={series} ep={[currentEp, setCurrentEp]} />
     </Page>
   );
 };

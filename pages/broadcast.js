@@ -3,7 +3,7 @@ import Page from "../layout/Page";
 
 const Broadcast = () => {
   return (
-    <Page>
+    <Page title="Broadcast" className="Broadcast">
       <Wip />
     </Page>
   );

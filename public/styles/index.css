@@ -288,6 +288,7 @@ footer #socials {
           flex-flow: row nowrap;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
+  height: auto;
 }
 
 @media (min-width: 1200px) {
@@ -298,8 +299,8 @@ footer #socials {
 
 .Browse .Grid .VideoImgContainer {
   width: 50%;
+  min-width: 50%;
   position: relative;
-  height: 250px;
   margin: 10px;
 }
 
@@ -311,9 +312,18 @@ footer #socials {
   height: 100%;
   background-color: #000;
   opacity: 0;
-  -webkit-transition: opacity .5s;
-  transition: opacity .5s;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
   z-index: 98;
+}
+
+.Browse .Grid .VideoImgContainer:active .Overlay {
+  opacity: 0.7;
+}
+
+.Browse .Grid .VideoImgContainer:active p {
+  opacity: 1;
+  z-index: 99;
 }
 
 .Browse .Grid .VideoImgContainer:hover .Overlay {
@@ -337,8 +347,9 @@ footer #socials {
   color: white;
   width: 50%;
   opacity: 0;
-  -webkit-transition: opacity .5s;
-  transition: opacity .5s;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+  cursor: default;
 }
 
 @media (min-width: 700px) {

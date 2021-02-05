@@ -3,7 +3,7 @@ import Page from "../layout/Page";
 
 const getStarted = () => {
     return (
-        <Page>
+        <Page className="GetStarted" title="Get Started">
             <Wip/>
         </Page>
     );

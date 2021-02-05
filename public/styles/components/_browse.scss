@@ -71,14 +71,16 @@
       flex-flow: row nowrap;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
+      height: auto;
       @include Desktop {
         scrollbar-width: thin;
       }
     }
     .VideoImgContainer {
       width: 50%;
+      min-width: 50%;
       position: relative;
-      height: 250px;
+
       margin: 10px;
 
       .Overlay {
@@ -89,8 +91,17 @@
         height: 100%;
         background-color: #000;
         opacity: 0;
-        transition: opacity .5s;
+        transition: opacity 0.5s;
         z-index: 98;
+      }
+      &:active {
+        .Overlay {
+          opacity: 0.7;
+        }
+        p {
+          opacity: 1;
+          z-index: 99;
+        }
       }
       &:hover {
         .Overlay {
@@ -112,13 +123,14 @@
         color: white;
         width: 50%;
         opacity: 0;
-        transition: opacity .5s;
+        transition: opacity 0.5s;
+        cursor: default;
       }
       @include tablet {
         width: 24%;
         min-width: 24%;
       }
-      
+
       .VideoImg {
         width: 100%;
         height: 100%;

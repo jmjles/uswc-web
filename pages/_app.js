@@ -46,7 +46,6 @@ const App = ({ Component, pageProps }) => {
               if (video.tags.length !== 0) {
                 for (const tag of video.tags) {
                   const t = tag.name.split(":");
-                  console.log(t)
                   if (t[0] === "ep" && parseInt(t[1]) === 1) {
                     return true;
                   }else if(t[0] === "ep" && parseInt(t[1]) !== 1) return false;

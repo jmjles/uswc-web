@@ -48,12 +48,23 @@ const App = ({ Component, pageProps }) => {
                   const t = tag.name.split(":");
                   if (t[0] === "ep" && parseInt(t[1]) === 1) {
                     return true;
-                  }else if(t[0] === "ep" && parseInt(t[1]) !== 1) return false;
+                  } else if (t[0] === "ep" && parseInt(t[1]) !== 1)
+                    return false;
                 }
                 return true;
               }
               return false;
             };
+
+            const exists = (title) => tempList.some((t) => t.title === title);
+
+            if (
+              !exists(video.parent_folder.name) &&
+              video.parent_folder.name !== "BIFs"
+            ) {
+              tempList.push({ title: video.parent_folder.name, videos: [] });
+            }
+
             if (video.tags.length === 0 || isFirst()) {
               if (tempList[x].title === video.parent_folder.name) {
                 tempList[x].videos.push({
@@ -68,6 +79,7 @@ const App = ({ Component, pageProps }) => {
             }
           }
         });
+
         setList(tempList);
         setVideos(res.data);
         setVideoLoading(false);

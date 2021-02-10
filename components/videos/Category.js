@@ -68,23 +68,9 @@ const Category = ({ title, videos }) => {
       <Font variant="h4">{title}</Font>
       <div className="Grid">
         <div className="wrap">
-          {/* <div
-            id="prev"
-            onClick={() => handleNav("prev")}
-            style={!prevVis ? styles.hidden : null}
-          >
-            <NavigateBefore color="primary" onClick={() => handleNav("prev")} />
-          </div> */}
           {videos.map((vid) => (
             <Video video={vid} />
           ))}
-          {/* <div
-            id="next"
-            onClick={() => handleNav("next")}
-            style={!nextVis ? styles.hidden : null}
-          >
-            <NavigateNext color="primary" onClick={() => handleNav("next")} />
-          </div> */}
         </div>
       </div>
     </section>

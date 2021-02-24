@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { vimeo } from "../util/axios";
+import { server } from "../util/axios";
 import * as gtag from "../lib/gtag";
 import { CssBaseline, ThemeProvider, StylesProvider } from "@material-ui/core";
 import theme from "../public/styles/theme";
@@ -39,7 +39,7 @@ const App = ({ Component, pageProps }) => {
       ];
       try {
         setVideoLoading(true);
-        const res = await vimeo("/");
+        const res = await server("/vimeo");
         res.data.forEach((video) => {
           for (let x = 0; x < tempList.length; x++) {
             const isFirst = () => {

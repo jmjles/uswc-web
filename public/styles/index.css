@@ -467,4 +467,38 @@ footer #socials {
   color: #000;
   text-decoration: none;
 }
+
+.Register {
+  margin: 0 auto;
+  max-width: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 20px;
+}
+
+.Register button {
+  margin-top: 20px;
+}
+
+.Login {
+  margin: 0 auto;
+  max-width: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 20px;
+}
+
+.Login button {
+  margin-top: 20px;
+}
 /*# sourceMappingURL=index.css.map */

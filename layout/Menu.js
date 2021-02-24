@@ -17,7 +17,6 @@ const Menu = () => {
     <Grid
       container
       justify="space-around"
-      sm={0}
       alignItems="center"
       className="Menu"
     >

@@ -11,15 +11,18 @@ import Page from "../../../layout/Page";
 
 const Watch = ({ videoLoading, videos }) => {
   const [uri, setUri] = useState("");
-  const [videoKey, setVideoKey] = useState(undefined);
   const [selected, setSelected] = useState({});
   const [series, setSeries] = useState([]);
   const [title, setTitle] = useState("");
   const [currentEp, setCurrentEp] = useState(0);
+  const [url,setURL] = useState("")
 
   const router = useRouter();
   const { id } = router.query;
-  console.log(selected)
+  
+  useEffect(()=>{
+setURL(window.location.href)
+  },[currentEp])
   useEffect(() => {
     if (!videoLoading && id) {
       const selectedVid = videos.find((video) => video.resource_key === id);
@@ -49,7 +52,7 @@ const Watch = ({ videoLoading, videos }) => {
       setSeries(list);
       setUri(`https://player.vimeo.com/video/${selectedVid.uri.split("/")[2]}`);
     }
-  }, [videoKey, videoLoading]);
+  }, [currentEp, videoLoading]);
 
   return (
     <Page title="Watch" className="Watch">
@@ -65,10 +68,10 @@ const Watch = ({ videoLoading, videos }) => {
         />
       </div>
       <div>
-        <a
+         <a
           href={`https://www.facebook.com/sharer.php?t=I'm watching ${
             title || selected.name
-          } at U.S. Weed Channel!&u=${window.location.href}`}
+          } at U.S. Weed Channel!&u=${url}`}
           target="_blank"
         >
           <Facebook color="primary" />
@@ -76,7 +79,7 @@ const Watch = ({ videoLoading, videos }) => {
         <a
           href={`https://twitter.com/share?url=I'm watching ${
             title || selected.name
-          } at U.S. Weed Channel! ${window.location.href}`}
+          } at U.S. Weed Channel! ${url}`}
           target="_blank"
         >
           <Twitter color="primary" />

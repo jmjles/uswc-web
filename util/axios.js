@@ -1,5 +1,5 @@
 import axios from "axios";
-const prod = "https://api.usweedchannel.com";
+const prod = "https://us-weed-channel-server.herokuapp.com";
 const dev = "http://localhost:5000";
 
 export const server = axios.create({

@@ -4,8 +4,7 @@ import { useRouter } from "next/router";
 const Video = ({ video }) => {
   const history = useRouter();
   const handleClick = () => {
-    localStorage.setItem("vidId", video.key);
-    history.push("/watch");
+    history.push(`/watch/${video.key}`);
   };
   return (
     <div className="VideoImgContainer">

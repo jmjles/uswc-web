@@ -2,7 +2,7 @@ import { Button, TextField, Typography as Font } from "@material-ui/core";
 import { useState } from "react";
 import { server } from "../../util/axios";
 
-const Register = ({ style }) => {
+const Register = ({ style, type: [type, setType] }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -10,6 +10,7 @@ const Register = ({ style }) => {
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const [tel, setTel] = useState("");
+
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
       case "firstName":
@@ -57,6 +58,7 @@ const Register = ({ style }) => {
   };
   return (
     <form className="Register" style={style && style} onSubmit={handleSubmit}>
+      <Font variant="h1">Register</Font>
       <TextField
         name="firstName"
         type="text"
@@ -137,6 +139,9 @@ const Register = ({ style }) => {
       <Button type="submit" variant="contained" color="primary">
         <Font variant="button">Submit</Font>
       </Button>
+      <Font variant="body2">
+        Already have an account? Click <b onClick={()=> setType("login")}>here</b>
+      </Font>
     </form>
   );
 };

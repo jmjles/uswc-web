@@ -1,10 +1,18 @@
-import { TextField, Button, Typography as Font } from "@material-ui/core";
+import {
+  TextField,
+  Button,
+  Typography as Font,
+  Collapse,
+} from "@material-ui/core";
+import { Alert } from "@material-ui/lab";
 import { useState } from "react";
 import { server } from "../../util/axios";
-const Login = ({ style }) => {
+const Login = ({ style, type: [type, setType] }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
   const handleChange = ({ target: { name, value } }) => {
+    if (error) setError(false);
     switch (name) {
       case "username":
         setUsername(value);
@@ -24,11 +32,13 @@ const Login = ({ style }) => {
       const res = await server.post("/user/login", { username, password });
       console.log(res);
     } catch (er) {
+      setError(true);
       console.log(er.response);
     }
   };
   return (
     <form className="Login" style={style && style} onSubmit={handleSubmit}>
+      <Font variant="h1">Login</Font>
       <TextField
         name="username"
         type="text"
@@ -51,9 +61,16 @@ const Login = ({ style }) => {
         onChange={handleChange}
         value={password}
       />
+      <Collapse in={error}>
+        <Alert severity="error">Incorrect Credentials</Alert>
+      </Collapse>
       <Button type="submit" variant="contained" color="primary">
         <Font variant="button">Submit</Font>
       </Button>
+      <Font variant="body2">
+        Need an account? Register{" "}
+        <b onClick={() => setType("register")}>here</b>.
+      </Font>
     </form>
   );
 };

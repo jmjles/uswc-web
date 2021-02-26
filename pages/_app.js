@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { server } from "../util/axios";
 import * as gtag from "../lib/gtag";
-import { CssBaseline, ThemeProvider, StylesProvider } from "@material-ui/core";
+import { CssBaseline, StylesProvider, MuiThemeProvider } from "@material-ui/core";
 import theme from "../public/styles/theme";
 import "../public/styles/index.css";
 const App = ({ Component, pageProps }) => {
@@ -91,7 +91,7 @@ const App = ({ Component, pageProps }) => {
   }, []);
 
   return (
-    <ThemeProvider theme={theme}>
+    <MuiThemeProvider theme={theme}>
       <StylesProvider injectFirst>
         <CssBaseline>
           <Component
@@ -102,7 +102,7 @@ const App = ({ Component, pageProps }) => {
           />
         </CssBaseline>
       </StylesProvider>
-    </ThemeProvider>
+    </MuiThemeProvider>
   );
 };
 

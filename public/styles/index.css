@@ -478,11 +478,27 @@ footer #socials {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  background-color: #292f36;
+  color: #fff;
+  border-radius: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   padding: 20px;
 }
 
+.Register input {
+  color: #fff;
+}
+
 .Register button {
-  margin-top: 20px;
+  margin: 20px 0;
+}
+
+.Register b {
+  cursor: pointer;
 }
 
 .Login {
@@ -495,10 +511,44 @@ footer #socials {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  background-color: #292f36;
+  color: #fff;
+  border-radius: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   padding: 20px;
 }
 
+.Login input {
+  color: #fff;
+}
+
 .Login button {
-  margin-top: 20px;
+  margin: 20px 0;
+}
+
+.Login b {
+  cursor: pointer;
+}
+
+.GetStarted h1 {
+  margin-bottom: 20px;
+}
+
+.GetStarted .buttonContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 300px;
+  margin: 0 auto;
 }
 /*# sourceMappingURL=index.css.map */

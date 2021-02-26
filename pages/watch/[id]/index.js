@@ -3,38 +3,26 @@ import {
   createStyles,
   Typography as Font,
 } from "@material-ui/core";
+import { Facebook, Twitter } from "@material-ui/icons";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import VideoTimeline from "../components/episodeTimeline/VideoTimeline";
-import Page from "../layout/Page";
+import VideoTimeline from "../../../components/episodeTimeline/VideoTimeline";
+import Page from "../../../layout/Page";
 
 const Watch = ({ videoLoading, videos }) => {
-  const history = useRouter();
   const [uri, setUri] = useState("");
   const [videoKey, setVideoKey] = useState(undefined);
   const [selected, setSelected] = useState({});
   const [series, setSeries] = useState([]);
   const [title, setTitle] = useState("");
   const [currentEp, setCurrentEp] = useState(0);
-  useEffect(() => {
-    const id = localStorage.getItem("vidId");
-    if (id !== videoKey) {
-      setVideoKey(id);
-    }
-  }, [videoKey, currentEp]);
 
+  const router = useRouter();
+  const { id } = router.query;
+  console.log(selected)
   useEffect(() => {
-    const id = localStorage.getItem("vidId");
-    if (!id) {
-      history.push("/browse");
-    }
-  });
-
-  useEffect(() => {
-    if (!videoLoading && videoKey) {
-      const selectedVid = videos.find(
-        (video) => video.resource_key === videoKey
-      );
+    if (!videoLoading && id) {
+      const selectedVid = videos.find((video) => video.resource_key === id);
       let list = [];
       let ser = "";
       selectedVid.tags.forEach((tag) => {
@@ -75,6 +63,24 @@ const Watch = ({ videoLoading, videos }) => {
           frameBorder="0"
           allow="fullscreen"
         />
+      </div>
+      <div>
+        <a
+          href={`https://www.facebook.com/sharer.php?t=I'm watching ${
+            title || selected.name
+          } at U.S. Weed Channel!&u=${window.location.href}`}
+          target="_blank"
+        >
+          <Facebook color="primary" />
+        </a>
+        <a
+          href={`https://twitter.com/share?url=I'm watching ${
+            title || selected.name
+          } at U.S. Weed Channel! ${window.location.href}`}
+          target="_blank"
+        >
+          <Twitter color="primary" />
+        </a>
       </div>
       <section>
         <Font variant="h2">{title}</Font>

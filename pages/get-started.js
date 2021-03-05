@@ -1,5 +1,6 @@
 import { Button, createStyles, Typography as Font } from "@material-ui/core";
-import { useState } from "react";
+import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 import Login from "../components/getStarted/Login";
 import Register from "../components/getStarted/Register";
 import Wip from "../components/Wip";
@@ -8,6 +9,11 @@ import Page from "../layout/Page";
 const getStarted = () => {
   const [type, setType] = useState("none");
   const handleType = (type) => setType(type);
+  const history = useRouter();
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) history.push("/dashboard");
+  }, []);
   return (
     <Page className="GetStarted" title="Get Started">
       <section style={type !== "none" ? styles.hidden : {}}>

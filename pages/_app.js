@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { server } from "../util/axios";
 import * as gtag from "../lib/gtag";
-import { CssBaseline, StylesProvider, MuiThemeProvider } from "@material-ui/core";
+import {
+  CssBaseline,
+  StylesProvider,
+  MuiThemeProvider,
+} from "@material-ui/core";
 import theme from "../public/styles/theme";
 import "../public/styles/index.css";
 const App = ({ Component, pageProps }) => {
@@ -60,7 +64,8 @@ const App = ({ Component, pageProps }) => {
 
             if (
               !exists(video.parent_folder.name) &&
-              video.parent_folder.name !== "BIFs"
+              video.parent_folder.name !== "BIFs" &&
+              video.parent_folder.name !== "Advertisement"
             ) {
               tempList.push({ title: video.parent_folder.name, videos: [] });
             }
@@ -82,6 +87,7 @@ const App = ({ Component, pageProps }) => {
 
         setList(tempList);
         setVideos(res.data);
+        console.log(tempList)
         setVideoLoading(false);
       } catch (er) {
         console.log(er.message);

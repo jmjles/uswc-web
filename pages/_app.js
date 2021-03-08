@@ -64,8 +64,7 @@ const App = ({ Component, pageProps }) => {
 
             if (
               !exists(video.parent_folder.name) &&
-              video.parent_folder.name !== "BIFs" &&
-              video.parent_folder.name !== "Advertisement"
+              video.parent_folder.name !== "BIFs"
             ) {
               tempList.push({ title: video.parent_folder.name, videos: [] });
             }

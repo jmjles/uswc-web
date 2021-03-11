@@ -40,7 +40,8 @@ const Register = ({ style, type: [type, setType] }) => {
     console.log(name, value);
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     if (password === confirm) {
       try {
         const res = await server.post("/auth/register", {
@@ -105,7 +106,7 @@ const Register = ({ style, type: [type, setType] }) => {
       />
       <TextField
         name="password"
-        type="text"
+        type="password"
         required
         placeholder="Password"
         variant="standard"
@@ -116,7 +117,7 @@ const Register = ({ style, type: [type, setType] }) => {
       />
       <TextField
         name="confirm"
-        type="text"
+        type="password"
         required
         placeholder="Confirm Password"
         variant="standard"
@@ -140,7 +141,8 @@ const Register = ({ style, type: [type, setType] }) => {
         <Font variant="button">Submit</Font>
       </Button>
       <Font variant="body2">
-        Already have an account? Click <b onClick={()=> setType("login")}>here</b>
+        Already have an account? Click{" "}
+        <b onClick={() => setType("login")}>here</b>
       </Font>
     </form>
   );

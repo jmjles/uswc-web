@@ -48,6 +48,7 @@ const Register = ({ style, type: [type, setType] }) => {
           firstName,
           lastName,
           email,
+          username,
           password,
           tel,
         });

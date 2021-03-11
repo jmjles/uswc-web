@@ -3,12 +3,13 @@ import {
   Button,
   Typography as Font,
   Collapse,
+  CircularProgress,
 } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { server } from "../../util/axios";
-const Login = ({ style, type: [type, setType] }) => {
+const Login = ({ style, type: [type, setType], token: [token, setToken] }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
@@ -33,9 +34,8 @@ const Login = ({ style, type: [type, setType] }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await server.post("/user/login", { username, password });
-      console.log(res);
-      localStorage.setItem("token", res.data.token);
+      const res = await server.post("/auth/login", { username, password });
+      setToken(res.data.token);
       router.push("/dashboard");
     } catch (er) {
       setError(true);
@@ -45,6 +45,10 @@ const Login = ({ style, type: [type, setType] }) => {
   return (
     <form className="Login" style={style && style} onSubmit={handleSubmit}>
       <Font variant="h1">Login</Font>
+      <div>
+        <CircularProgress color="primary" />
+      </div>
+
       <TextField
         name="username"
         type="text"

@@ -11,19 +11,19 @@
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 20px;
+  div {
+    margin-bottom: 10px;
+  }
   input {
     color: #fff;
   }
   textarea {
     color: #fff;
   }
-  label{
-      display: flex;
-      margin-left: 0px;
-      margin-right: auto;
-  }
-  button {
-    margin: 20px 0;
+  label {
+    display: flex;
+    margin-left: 0px;
+    margin-right: auto;
   }
   b {
     cursor: pointer;

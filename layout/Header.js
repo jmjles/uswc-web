@@ -1,9 +1,9 @@
 import { Paper } from "@material-ui/core";
 import Menu from "./Menu";
-const Header = () => {
+const Header = (props) => {
   return (
     <nav className="Header">
-      <Menu />
+      <Menu token={props.token} />
     </nav>
   );
 };

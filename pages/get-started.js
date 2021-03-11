@@ -3,10 +3,9 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import Login from "../components/getStarted/Login";
 import Register from "../components/getStarted/Register";
-import Wip from "../components/Wip";
-import Page from "../layout/Page";
+import Content from "../layout/Content";
 
-const getStarted = () => {
+const getStarted = (props) => {
   const [type, setType] = useState("none");
   const handleType = (type) => setType(type);
   const history = useRouter();
@@ -15,7 +14,7 @@ const getStarted = () => {
     if (token) history.push("/dashboard");
   }, []);
   return (
-    <Page className="GetStarted" title="Get Started">
+    <Content className="GetStarted" title="Get Started">
       <section style={type !== "none" ? styles.hidden : {}}>
         <Font variant="h1">Get started with U.S. Weed Channel</Font>
         <div className="buttonContainer">
@@ -40,12 +39,14 @@ const getStarted = () => {
       <Register
         style={type !== "register" ? styles.hidden : {}}
         type={[type, setType]}
+        token={props.token}
       />
       <Login
         style={type !== "login" ? styles.hidden : {}}
         type={[type, setType]}
+        token={props.token}
       />
-    </Page>
+    </Content>
   );
 };
 const styles = createStyles({

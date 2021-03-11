@@ -1,23 +1,19 @@
-import {
-  Button,
-  Grid,
-  StylesProvider,
-  Typography as Font,
-} from "@material-ui/core";
+import { Button, Grid, Typography as Font } from "@material-ui/core";
 import Link from "next/link";
 import { useEffect } from "react";
 import Page from "../layout/Page";
 import { Waypoint } from "react-waypoint";
 import { fadeIn } from "../util/animations";
+import Content from "../layout/Content";
 export default function Home() {
   const weedIcon = "/img/weed-icon.png";
   return (
-    <Page title="Home" className="Home">
+    <Content title="Home" className="Home">
       <div className="PlayerContainer">
         <iframe
           src="https://player.vimeo.com/video/392824756"
           frameBorder="0"
-          allow="autoplay; fullscreen"
+          allow="fullscreen"
           allowFullScreen
         />
       </div>
@@ -81,6 +77,6 @@ export default function Home() {
           <img />
         </a>
       </section>
-    </Page>
+    </Content>
   );
 }

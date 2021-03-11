@@ -573,6 +573,10 @@ footer #socials {
   padding: 20px;
 }
 
+.NewVideo div {
+  margin-bottom: 10px;
+}
+
 .NewVideo input {
   color: #fff;
 }
@@ -587,10 +591,6 @@ footer #socials {
   display: flex;
   margin-left: 0px;
   margin-right: auto;
-}
-
-.NewVideo button {
-  margin: 20px 0;
 }
 
 .NewVideo b {

@@ -1,9 +1,9 @@
-import Wip from "../components/Wip";
-import Page from "../layout/Page";
 import { Typography as Font } from "@material-ui/core";
+import Content from "../layout/Content";
+
 const Fishin = () => {
   return (
-    <Page title="Fishin" className="Fishin">
+    <Content title="Fishin" className="Fishin">
       <img src="/" />
 
       <section>
@@ -32,7 +32,7 @@ const Fishin = () => {
         </Font>
       </section>
       <img src="/img/vet-meds.png" />
-    </Page>
+    </Content>
   );
 };
 

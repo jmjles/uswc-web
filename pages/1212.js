@@ -1,8 +1,9 @@
-import Page from "../layout/Page";
 import { Typography as Font } from "@material-ui/core";
+import Content from "../layout/Content";
+
 const Promo = () => {
   return (
-    <Page title="1212" className="MCS">
+    <Content title="1212" className="MCS">
       <img src="/img/1212.png" />
       <section>
         <Font variant="h2" component="h1">
@@ -23,7 +24,7 @@ const Promo = () => {
         </Font>
       </section>
       <section></section>
-    </Page>
+    </Content>
   );
 };
 

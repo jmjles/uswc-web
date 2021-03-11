@@ -43,7 +43,7 @@ const Register = ({ style, type: [type, setType] }) => {
   const handleSubmit = async () => {
     if (password === confirm) {
       try {
-        const res = await server.post("/user/register", {
+        const res = await server.post("/auth/register", {
           firstName,
           lastName,
           email,

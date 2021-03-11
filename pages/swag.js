@@ -1,11 +1,11 @@
 import Wip from "../components/Wip";
-import Page from "../layout/Page";
+import Content from "../layout/Content";
 
 const swag = () => {
   return (
-    <Page title="Swag" className="Swag">
+    <Content title="Swag" className="Swag">
       <Wip />
-    </Page>
+    </Content>
   );
 };
 

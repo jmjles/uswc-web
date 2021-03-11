@@ -9,10 +9,12 @@ import {
 } from "@material-ui/core";
 import theme from "../public/styles/theme";
 import "../public/styles/index.css";
+import Page from "../layout/Page";
 const App = ({ Component, pageProps }) => {
   const [videos, setVideos] = useState([]);
   const [list, setList] = useState([]);
   const [videoLoading, setVideoLoading] = useState(false);
+  const [token, setToken] = useState(null);
   const router = useRouter();
 
   //* Google Analytics
@@ -25,6 +27,13 @@ const App = ({ Component, pageProps }) => {
       router.events.off("routeChangeComplete", handleRouteChange);
     };
   }, [router.events]);
+
+  //* Set Token
+  useEffect(() => {
+    const t = localStorage.getItem("token");
+    if (token) localStorage.setItem("token", token);
+    else if (!token && t && t !== token) setToken(t);
+  }, [token]);
 
   //* Get Videos and Organize them in a list
   useEffect(() => {
@@ -86,7 +95,7 @@ const App = ({ Component, pageProps }) => {
 
         setList(tempList);
         setVideos(res.data);
-        console.log(tempList)
+        console.log(tempList);
         setVideoLoading(false);
       } catch (er) {
         console.log(er.message);
@@ -99,12 +108,15 @@ const App = ({ Component, pageProps }) => {
     <MuiThemeProvider theme={theme}>
       <StylesProvider injectFirst>
         <CssBaseline>
-          <Component
-            {...pageProps}
-            list={list}
-            videos={videos}
-            videoLoading={videoLoading}
-          />
+          <Page token={token}>
+            <Component
+              {...pageProps}
+              list={list}
+              videos={videos}
+              videoLoading={videoLoading}
+              token={[token, setToken]}
+            />
+          </Page>
         </CssBaseline>
       </StylesProvider>
     </MuiThemeProvider>

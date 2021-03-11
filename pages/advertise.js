@@ -1,9 +1,9 @@
 import { Button, Typography } from "@material-ui/core";
-import Page from "../layout/Page";
+import Content from "../layout/Content";
 
 const Advertise = () => {
   return (
-    <Page title="Advertise" className="Advertise">
+    <Content title="Advertise" className="Advertise">
       <div className="PlayerContainer" className="PlayerContainer">
         <iframe
           src="https://player.vimeo.com/video/288596409"
@@ -26,7 +26,7 @@ const Advertise = () => {
           allowfullscreen
         />
       </div>
-    </Page>
+    </Content>
   );
 };
 

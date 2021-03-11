@@ -1,12 +1,10 @@
 import { Typography as Font } from "@material-ui/core";
-import Page from "../layout/Page";
 import "video.js/dist/video-js.css";
-import Head from "next/head";
+import Content from "../layout/Content";
 
 const Radio = () => {
   return (
-    <Page>
-      <Head></Head>
+    <Content title="Radio">
       <section className="Radio">
         <a
           href="https://epsilon.shoutca.st:2199/tunein/usweedchannel.pls"
@@ -37,7 +35,7 @@ const Radio = () => {
         type="text/javascript"
         src="https://epsilon.shoutca.st:2199/system/streaminfo.js"
       />
-    </Page>
+    </Content>
   );
 };
 

@@ -9,17 +9,13 @@ import { MenuOpenRounded, MenuRounded } from "@material-ui/icons";
 import Link from "next/link";
 import { useState } from "react";
 import { sidebarAni } from "../util/animations";
-const Menu = () => {
+
+const Menu = ({ token }) => {
   const [open, setOpen] = useState(false);
   const handleMenu = () => setOpen(!open);
   const handleSidebar = () => sidebarAni(handleMenu);
   return (
-    <Grid
-      container
-      justify="space-around"
-      alignItems="center"
-      className="Menu"
-    >
+    <Grid container justify="space-around" alignItems="center" className="Menu">
       <Grid item>
         <Link href="/">
           <img src="/img/uswc-logo.png" />
@@ -27,8 +23,17 @@ const Menu = () => {
       </Grid>
       <Grid item className="TabletMenu">
         <Link href="/get-started">
-          <Button color="primary" size="large">
+          <Button color="primary" size="large" style={token && style.hidden}>
             <Font variant="button">Get Started</Font>
+          </Button>
+        </Link>
+        <Link href="/dashboard">
+          <Button
+            color="primary"
+            size="large"
+            style={!token ? style.hidden : null}
+          >
+            <Font variant="button">Dashboard</Font>
           </Button>
         </Link>
       </Grid>

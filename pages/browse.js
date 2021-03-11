@@ -1,10 +1,10 @@
-import Page from "../layout/Page";
 import Category from "../components/videos/Category";
 import { CircularProgress, createStyles } from "@material-ui/core";
 import Featured from "../components/videos/Featured";
+import Content from "../layout/Content";
 const browse = ({ list, videoLoading }) => {
   return (
-    <Page title="Browse" className="Browse">
+    <Content title="Browse" className="Browse">
       <div style={!videoLoading ? style.hidden : style.progress}>
         <CircularProgress size={50} />
       </div>
@@ -15,7 +15,7 @@ const browse = ({ list, videoLoading }) => {
           return <Category title={entry.title} videos={entry.videos} />;
         }
       })}
-    </Page>
+    </Content>
   );
 };
 const style = createStyles({

@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import NewVideo from "../components/publisher/newVideo/NewVideo";
-import Page from "../layout/Page";
+import Content from "../layout/Content";
 
 const dashboard = () => {
   const history = useRouter();
@@ -10,9 +10,9 @@ const dashboard = () => {
     if (!token) history.push("/get-started");
   }, []);
   return (
-    <Page title="Dashboard" className="Dashboard">
+    <Content title="Dashboard" className="Dashboard">
       <NewVideo />
-    </Page>
+    </Content>
   );
 };
 

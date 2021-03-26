@@ -1,8 +1,18 @@
-import { Button, TextField, Typography as Font } from "@material-ui/core";
+import {
+  Button,
+  CircularProgress,
+  TextField,
+  Typography as Font,
+} from "@material-ui/core";
 import { useState } from "react";
 import { server } from "../../util/axios";
 
-const Register = ({ style, type: [type, setType] }) => {
+const Register = ({
+  style,
+  type: [type, setType],
+  token: [token, setToken],
+  user: [user, setUser],
+}) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -10,6 +20,8 @@ const Register = ({ style, type: [type, setType] }) => {
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const [tel, setTel] = useState("");
+
+  const [loading, setLoading] = useState(false);
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -52,7 +64,7 @@ const Register = ({ style, type: [type, setType] }) => {
           password,
           tel,
         });
-        console.log(res);
+        setToken(res.data.token);
       } catch (er) {
         console.log(er.response);
       }
@@ -61,6 +73,9 @@ const Register = ({ style, type: [type, setType] }) => {
   return (
     <form className="Register" style={style && style} onSubmit={handleSubmit}>
       <Font variant="h1">Register</Font>
+      <div style={loading ? { textAlign: "center" } : { display: "none" }}>
+        <CircularProgress color="primary" hidden={loading} />
+      </div>
       <TextField
         name="firstName"
         type="text"

@@ -13,7 +13,7 @@ const Login = ({ style, type: [type, setType], token: [token, setToken] }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
-
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const handleChange = ({ target: { name, value } }) => {
@@ -28,25 +28,27 @@ const Login = ({ style, type: [type, setType], token: [token, setToken] }) => {
       default:
         console.log("Unknown value");
     }
-    console.log(name, value);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
       const res = await server.post("/auth/login", { username, password });
+      setLoading(false);
       setToken(res.data.token);
-      router.push("/dashboard");
+      router.push(`/${res.data.user.type}-dashboard`);
     } catch (er) {
       setError(true);
+      setLoading(false);
       console.log(er.response);
     }
   };
   return (
     <form className="Login" style={style && style} onSubmit={handleSubmit}>
       <Font variant="h1">Login</Font>
-      <div>
-        <CircularProgress color="primary" />
+      <div style={loading ? { textAlign: "center" } : { display: "none" }}>
+        <CircularProgress color="primary" hidden={loading} />
       </div>
 
       <TextField

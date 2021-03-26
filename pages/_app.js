@@ -109,7 +109,6 @@ const App = ({ Component, pageProps }) => {
 
         setList(tempList);
         setVideos(res.data);
-        console.log(tempList);
         setVideoLoading(false);
       } catch (er) {
         console.log(er.message);

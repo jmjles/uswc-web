@@ -27,7 +27,7 @@ const Menu = ({ token , user:[user,s] }) => {
             <Font variant="button">Get Started</Font>
           </Button>
         </Link>
-        <Link href={`/${user.type}dashboard`}>
+        <Link href={`/${user.type}-dashboard`}>
           <Button
             color="primary"
             size="large"

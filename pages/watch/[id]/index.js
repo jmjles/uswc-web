@@ -7,7 +7,7 @@ import { Facebook, Twitter } from "@material-ui/icons";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import VideoTimeline from "../../../components/episodeTimeline/VideoTimeline";
-import Page from "../../../layout/Page";
+import Content from "../../../layout/Content";
 
 const Watch = ({ videoLoading, videos }) => {
   const [uri, setUri] = useState("");
@@ -55,7 +55,7 @@ setURL(window.location.href)
   }, [currentEp, videoLoading]);
 
   return (
-    <Page title="Watch" className="Watch">
+    <Content title="Watch" className="Watch">
       <CircularProgress style={!videoLoading ? style.hidden : {}} />
       <div className="PlayerContainer">
         <iframe
@@ -90,7 +90,7 @@ setURL(window.location.href)
         <Font variant="body1">{selected.description}</Font>
       </section>
       <VideoTimeline series={series} ep={[currentEp, setCurrentEp]} />
-    </Page>
+    </Content>
   );
 };
 const style = createStyles({

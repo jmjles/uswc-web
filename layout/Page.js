@@ -23,7 +23,7 @@ const Page = (props) => {
   };
   return (
     <div className="PageLayout">
-      <Header token={props.token} />
+      <Header token={props.token} user={props.user}/>
       <Sidebar token={props.token} />
       <Modal open={open} onClose={handleClose}>
         <div className="LegalModal">

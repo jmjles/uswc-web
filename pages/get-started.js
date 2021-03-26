@@ -40,11 +40,13 @@ const getStarted = (props) => {
         style={type !== "register" ? styles.hidden : {}}
         type={[type, setType]}
         token={props.token}
+        user={props.user}
       />
       <Login
         style={type !== "login" ? styles.hidden : {}}
         type={[type, setType]}
         token={props.token}
+        user={props.user}
       />
     </Content>
   );

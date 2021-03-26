@@ -10,7 +10,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { sidebarAni } from "../util/animations";
 
-const Menu = ({ token }) => {
+const Menu = ({ token , user:[user,s] }) => {
   const [open, setOpen] = useState(false);
   const handleMenu = () => setOpen(!open);
   const handleSidebar = () => sidebarAni(handleMenu);
@@ -27,7 +27,7 @@ const Menu = ({ token }) => {
             <Font variant="button">Get Started</Font>
           </Button>
         </Link>
-        <Link href="/dashboard">
+        <Link href={`/${user.type}dashboard`}>
           <Button
             color="primary"
             size="large"

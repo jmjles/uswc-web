@@ -735,4 +735,197 @@ footer #socials {
 .NewVideo .MuiSelect-select {
   color: #fff;
 }
+
+.Modal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.Modal form {
+  overflow: hidden;
+  padding: 20px;
+  background-color: #292f36;
+  color: #fff;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  visibility: hidden;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  opacity: 0;
+  display: none;
+}
+
+.Modal form input,
+.Modal form textarea {
+  color: #fff;
+}
+
+.Modal form label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 0px;
+  margin-right: auto;
+}
+
+.Modal form label.MuiFormLabel-root {
+  color: darkgray;
+}
+
+.Modal form label.Mui-focused {
+  color: #70ae6e;
+}
+
+.Modal form .MuiInput-root {
+  margin-bottom: 10px;
+}
+
+.Modal form .MuiSelect-select,
+.Modal form .MuiSelect-icon {
+  color: #fff;
+}
+
+.Modal form ::-webkit-calendar-picker-indicator {
+  -webkit-filter: invert(1);
+          filter: invert(1);
+}
+
+.Modal form .Nav {
+  padding-top: 20px;
+}
+
+.Modal .Active {
+  opacity: 1;
+  visibility: visible;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.DeleteModal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.DeleteModal .Content {
+  overflow: hidden;
+  padding: 20px;
+  background-color: #292f36;
+  color: #fff;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.Editor {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.Editor .Content {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  min-height: 300px;
+  overflow: hidden;
+}
+
+.Editor .Content .Title {
+  margin-bottom: 20px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 400px;
+}
+
+.Editor .Content img {
+  width: 75px;
+}
+
+.Editor form {
+  overflow: hidden;
+  padding: 20px;
+  background-color: #292f36;
+  color: #fff;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  visibility: hidden;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  opacity: 0;
+  display: none;
+}
+
+.Editor form input,
+.Editor form textarea {
+  color: #fff;
+}
+
+.Editor form label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 0px;
+  margin-right: auto;
+}
+
+.Editor form label.MuiFormLabel-root {
+  color: darkgray;
+}
+
+.Editor form label.Mui-focused {
+  color: #70ae6e;
+}
+
+.Editor form .MuiInput-root {
+  margin-bottom: 10px;
+}
+
+.Editor form .MuiSelect-select,
+.Editor form .MuiSelect-icon {
+  color: #fff;
+}
+
+.Editor form ::-webkit-calendar-picker-indicator {
+  -webkit-filter: invert(1);
+          filter: invert(1);
+}
+
+.Editor form .Nav {
+  padding-top: 20px;
+}
+
+.Editor .Active {
+  opacity: 1;
+  visibility: visible;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
 /*# sourceMappingURL=index.css.map */

@@ -28,19 +28,22 @@ export default function Home() {
       </section>
 
       <Grid container justify="space-around" component="section" id="services">
-        <Grid
-          item
-          xs={12}
-          sm={3}
-          container
-          direction="column"
-          alignContent="center"
-        >
-          <img src={weedIcon} />
-          <Font align="center" variant="h5">
-            Subscribe
-          </Font>
-        </Grid>
+        <Link href="/get-started">
+          <Grid
+            item
+            xs={12}
+            sm={3}
+            container
+            direction="column"
+            alignContent="center"
+          >
+            <img src={weedIcon} />
+            <Font align="center" variant="h5">
+              Subscribe
+            </Font>
+          </Grid>
+        </Link>
+
         <Link href="/advertise">
           <Grid
             item

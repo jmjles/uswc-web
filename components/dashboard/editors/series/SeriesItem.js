@@ -52,7 +52,7 @@ const SeriesItem = ({ series = {}, refresh }) => {
           refresh={refresh}
         />
         <DeleteSeries
-          series={series._id}
+          seriesId={series._id}
           handleShow={handleDeleteShow}
           modal={modal2}
           refresh={refresh}

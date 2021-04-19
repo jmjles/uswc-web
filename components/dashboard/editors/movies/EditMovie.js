@@ -14,13 +14,10 @@ const EditMovie = ({ m, modal, handleShow, refresh }) => {
   const [file, setFile] = useState("");
   const [thumbnail, setThumbnail] = useState("");
   const [trick, setTrick] = useState("");
-  const [seriesId, setSeriesId] = useState(m.seriesId || "");
   const [tags, setTags] = useState(m.tags || []);
   const [tag, setTag] = useState("");
   const [genres, setGenres] = useState(m.genres || []);
   const [genre, setGenre] = useState("");
-  const [season, setSeason] = useState(m.season || "");
-  const [episode, setEpisode] = useState(m.episode || "");
 
   const [releaseDate, setReleaseDate] = useState(m.releaseDate || " ");
   const [dateAdded, setDateAdded] = useState(m.dateAdded || " ");
@@ -98,15 +95,6 @@ const EditMovie = ({ m, modal, handleShow, refresh }) => {
       case "trick":
         setTrick(files[0]);
         break;
-      case "seriesId":
-        setSeriesId(value);
-        break;
-      case "season":
-        setSeason(value);
-        break;
-      case "episode":
-        setEpisode(value);
-        break;
       case "tag":
         setTag(value.trim().toLowerCase());
         break;
@@ -144,6 +132,7 @@ const EditMovie = ({ m, modal, handleShow, refresh }) => {
     try {
       event.preventDefault();
       if (step === 3) {
+        setLoading(true);
         const duration = hours * 60 * 60 + minutes * 60 + 1 * seconds;
         const formData = new FormData();
         if (title !== m.title) formData.append("title", title);
@@ -159,9 +148,6 @@ const EditMovie = ({ m, modal, handleShow, refresh }) => {
         if (thumbnail) formData.append("thumbnail", thumbnail);
         if (trick) formData.append("trick", trick);
 
-        if (episode !== m.episode) formData.append("episode", episode);
-        if (seriesId !== m.seriesId) formData.append("seriesId", seriesId);
-        if (season !== m.season) formData.append("season", season);
         if (releaseDate !== m.releaseDate)
           formData.append("releaseDate", releaseDate);
 
@@ -171,11 +157,10 @@ const EditMovie = ({ m, modal, handleShow, refresh }) => {
 
         if (Array.toString(m.tags) !== Array.toString(tags))
           tags.forEach((t) => formData.append("tags", t));
+
         if (Array.toString(genres) !== Array.toString(m.genres))
           genres.forEach((g) => formData.append("genres", g));
-        console.log(m.id);
-        console.log(m._id);
-        console.log(e);
+
         formData.append("id", m._id);
         await server.put("/video", formData, {
           headers: { "Content-Type": "multipart/form-data" },
@@ -206,13 +191,10 @@ const EditMovie = ({ m, modal, handleShow, refresh }) => {
     setFile("");
     setThumbnail("");
     setTrick("");
-    setSeriesId(m.seriesId || "");
     setTags(m.tags || []);
     setTag("");
     setGenres(m.genres || []);
     setGenre("");
-    setSeason(m.season || "");
-    setEpisode(m.episode || "");
 
     setReleaseDate(m.releaseDate || " ");
     setDateAdded(m.dateAdded || " ");

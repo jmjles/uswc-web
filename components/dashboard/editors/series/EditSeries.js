@@ -10,7 +10,6 @@ const EditSeries = ({ s, modal, handleShow, refresh }) => {
   const [longDesc, setLongDesc] = useState(s.long_desc || "");
   const [subscription, setSubscription] = useState(s.subscription || false);
   const [thumbnail, setThumbnail] = useState("");
-  const [seriesId, setSeriesId] = useState(s.seriesId || "");
   const [tags, setTags] = useState(s.tags || []);
   const [tag, setTag] = useState("");
   const [genres, setGenres] = useState(s.genres || []);
@@ -94,7 +93,7 @@ const EditSeries = ({ s, modal, handleShow, refresh }) => {
     try {
       event.preventDefault();
       if (step === 3) {
-        const duration = hours * 60 * 60 + minutes * 60 + 1 * seconds;
+        setLoading(true);
         const formData = new FormData();
         if (title !== s.title) formData.append("title", title);
         if (shortDesc !== s.short_desc) formData.append("shortDesc", shortDesc);

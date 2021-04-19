@@ -9,10 +9,10 @@ import {
 import { Cancel, Check } from "@material-ui/icons";
 import React from "react";
 import { server } from "../../../../util/axios";
-const DeleteSeries = ({ modal, handleShow, movieId, refresh }) => {
+const DeleteSeries = ({ modal, handleShow, seriesId, refresh }) => {
     const handleDelete = async () => {
       try {
-        await server.delete(`/video/${movieId}`);
+        await server.delete(`/video/series/${seriesId}`);
         await refresh();
       } catch (er) {
         console.log(er);

@@ -132,6 +132,7 @@ const EditVideo = ({ v, modal, handleShow, refresh }) => {
     try {
       event.preventDefault();
       if (step === 3) {
+        setLoading(true);
         const duration = hours * 60 * 60 + minutes * 60 + 1 * seconds;
         const formData = new FormData();
         if (title !== v.title) formData.append("title", title);
@@ -147,9 +148,6 @@ const EditVideo = ({ v, modal, handleShow, refresh }) => {
         if (thumbnail) formData.append("thumbnail", thumbnail);
         if (trick) formData.append("trick", trick);
 
-        if (episode !== v.episode) formData.append("episode", episode);
-        if (seriesId !== v.seriesId) formData.append("seriesId", seriesId);
-        if (season !== v.season) formData.append("season", season);
         if (releaseDate !== v.releaseDate)
           formData.append("releaseDate", releaseDate);
 
@@ -159,9 +157,12 @@ const EditVideo = ({ v, modal, handleShow, refresh }) => {
 
         if (Array.toString(v.tags) !== Array.toString(tags))
           tags.forEach((t) => formData.append("tags", t));
+
         if (Array.toString(genres) !== Array.toString(v.genres))
           genres.forEach((g) => formData.append("genres", g));
+
         formData.append("id", v._id);
+
         await server.put("/video", formData, {
           headers: { "Content-Type": "multipart/form-data" },
         });

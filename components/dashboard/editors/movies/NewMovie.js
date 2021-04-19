@@ -4,7 +4,7 @@ import MovieForm1 from "./MovieForm1";
 import MovieForm2 from "./MovieForm2";
 import MovieForm3 from "./MovieForm3";
 
-const NewMovie = ({refresh}) => {
+const NewMovie = ({ refresh }) => {
   const [title, setTitle] = useState("");
   const [shortDesc, setShortDesc] = useState("");
   const [longDesc, setLongDesc] = useState("");
@@ -13,13 +13,10 @@ const NewMovie = ({refresh}) => {
   const [file, setFile] = useState("");
   const [thumbnail, setThumbnail] = useState("");
   const [trick, setTrick] = useState("");
-  const [seriesId, setSeriesId] = useState("");
   const [tags, setTags] = useState([]);
   const [tag, setTag] = useState("");
   const [genres, setGenres] = useState([]);
   const [genre, setGenre] = useState("");
-  const [season, setSeason] = useState("");
-  const [episode, setEpisode] = useState("");
 
   const [releaseDate, setReleaseDate] = useState(" ");
   const [dateAdded, setDateAdded] = useState(" ");
@@ -84,15 +81,6 @@ const NewMovie = ({refresh}) => {
       case "trick":
         setTrick(files[0]);
         break;
-      case "seriesId":
-        setSeriesId(value);
-        break;
-      case "season":
-        setSeason(value);
-        break;
-      case "episode":
-        setEpisode(value);
-        break;
       case "tag":
         setTag(value.trim().toLowerCase());
         break;
@@ -122,7 +110,7 @@ const NewMovie = ({refresh}) => {
         break;
       default:
         console.log("Wrong type");
-        console.log(name);
+        console.log(value);
     }
   };
 
@@ -130,22 +118,28 @@ const NewMovie = ({refresh}) => {
     try {
       e.preventDefault();
       if (step === 3) {
+        setLoading(true);
         const duration = hours * 60 * 60 + minutes * 60 + 1 * seconds;
         const formData = new FormData();
         formData.append("title", title);
         formData.append("shortDesc", shortDesc);
         formData.append("longDesc", longDesc);
         formData.append("duration", duration);
+
         formData.append("language", language);
+
         formData.append("subscription", subscription);
+
         formData.append("file", file);
         formData.append("thumbnail", thumbnail);
         formData.append("trick", trick);
-        formData.append("type", "movies");
+
         formData.append("releaseDate", releaseDate);
         formData.append("dateAdded", dateAdded);
         formData.append("startDate", startDate);
         formData.append("endDate", endDate);
+        
+        formData.append("type","movie");
 
         tags.forEach((t) => formData.append("tags", t));
         genres.forEach((g) => formData.append("genres", g));
@@ -153,10 +147,10 @@ const NewMovie = ({refresh}) => {
         await server.post("/video", formData, {
           headers: { "Content-Type": "multipart/form-data" },
         });
-
         setLoading(false);
         setShow(true);
         setCreated(true);
+        await refresh();
         setTimeout(Reset, 3000);
       } else {
         setStep(step + 1);

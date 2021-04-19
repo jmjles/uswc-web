@@ -120,6 +120,7 @@ const NewVideo = ({ refresh }) => {
     try {
       event.preventDefault();
       if (step === 3) {
+        setLoading(true);
         const duration = hours * 60 * 60 + minutes * 60 + 1 * seconds;
         const formData = new FormData();
         formData.append("title", title);
@@ -135,15 +136,13 @@ const NewVideo = ({ refresh }) => {
         formData.append("thumbnail", thumbnail);
         formData.append("trick", trick);
 
-        formData.append("episode", episode);
-        formData.append("seriesId", seriesId);
-        formData.append("season", season);
-
         formData.append("releaseDate", releaseDate);
-
         formData.append("dateAdded", dateAdded);
         formData.append("startDate", startDate);
         formData.append("endDate", endDate);
+        
+        formData.append("type","shortFormVideo")
+
         tags.forEach((t) => formData.append("tags", t));
         genres.forEach((g) => formData.append("genres", g));
 

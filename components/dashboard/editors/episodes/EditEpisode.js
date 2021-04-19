@@ -144,6 +144,7 @@ const EditEpisode = ({ e, modal, handleShow, refresh, series = [] }) => {
     try {
       event.preventDefault();
       if (step === 3) {
+        setLoading(true)
         const duration = hours * 60 * 60 + minutes * 60 + 1 * seconds;
         const formData = new FormData();
         if (title !== e.title) formData.append("title", title);

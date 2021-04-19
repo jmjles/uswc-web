@@ -129,7 +129,7 @@ const NewEpisode = ({ series = [], refresh }) => {
         console.log(name);
     }
   };
-  const reset = () => {
+  const Reset = () => {
     setTitle("");
     setShortDesc("");
     setLongDesc("");
@@ -165,6 +165,7 @@ const NewEpisode = ({ series = [], refresh }) => {
     try {
       e.preventDefault();
       if (step === 3) {
+        setLoading(true)
         const duration = hours * 60 * 60 + minutes * 60 + 1 * seconds;
         const formData = new FormData();
         formData.append("title", title);
@@ -193,9 +194,10 @@ const NewEpisode = ({ series = [], refresh }) => {
         });
 
         setLoading(false);
-        await refresh();
         setShow(true);
         setCreated(true);
+
+        await refresh();
         setTimeout(Reset, 3000);
       } else {
         setStep(step + 1);

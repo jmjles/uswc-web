@@ -45,7 +45,27 @@ const NewSeries = ({refresh}) => {
       setGenre("");
     }
   };
+  const Reset = () =>{
+    setTitle("");
+    setShortDesc("");
+    setLongDesc("");
+    setSubscription(false);
+    setThumbnail("");
+    setTags([]);
+    setTag("");
+    setGenres([]);
+    setGenre("");
 
+    setReleaseDate(" ");
+    setDateAdded(" ");
+    setStartDate(" ");
+    setEndDate(" ");
+
+    setCreated(false);
+    setShow(false);
+    setLoading(false);
+    setStep(1);
+  }
   const handleChange = ({ target: { name, value, files } }) => {
     if (show) setShow(false);
     switch (name) {
@@ -84,7 +104,7 @@ const NewSeries = ({refresh}) => {
         break;
       default:
         console.log("Wrong type");
-        console.log(name);
+        console.log(value);
     }
   };
 
@@ -92,6 +112,7 @@ const NewSeries = ({refresh}) => {
     try {
       e.preventDefault();
       if (step === 2) {
+        setLoading(true);
         const formData = new FormData();
         formData.append("title", title);
         formData.append("shortDesc", shortDesc);
@@ -106,14 +127,15 @@ const NewSeries = ({refresh}) => {
         tags.forEach((t) => formData.append("tags", t));
         genres.forEach((g) => formData.append("genres", g));
 
-        await server.post("/series", formData, {
+        await server.post("/video/series", formData, {
           headers: { "Content-Type": "multipart/form-data" },
         });
 
         setLoading(false);
         setShow(true);
         setCreated(true);
-        setTimeout(()=> Reset, 3000);
+        await refresh();
+        setTimeout(Reset, 3000);
       } else {
         setStep(step + 1);
       }

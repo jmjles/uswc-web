@@ -4,8 +4,7 @@ import Sidebar from "./Sidebar";
 import { Button, Modal, Typography } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import { Error } from "@material-ui/icons";
-import Proptypes from "prop-types";
-import Head from "next/head";
+
 const Page = (props) => {
   const [open, setOpen] = useState(false);
   useEffect(() => {
@@ -24,11 +23,8 @@ const Page = (props) => {
   };
   return (
     <div className="PageLayout">
-      <Head>
-        <title>{props.title ? `USWC | ${props.title}` : ""}</title>
-      </Head>
-      <Header />
-      <Sidebar />
+      <Header token={props.token} user={props.user}/>
+      <Sidebar token={props.token} />
       <Modal open={open} onClose={handleClose}>
         <div className="LegalModal">
           <Error color="primary" />
@@ -53,9 +49,5 @@ const Page = (props) => {
       <Footer />
     </div>
   );
-};
-Page.propTypes = {
-  className: Proptypes.string,
-  title: Proptypes.string.isRequired,
 };
 export default Page;

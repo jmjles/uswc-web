@@ -1,23 +1,19 @@
-import {
-  Button,
-  Grid,
-  StylesProvider,
-  Typography as Font,
-} from "@material-ui/core";
+import { Button, Grid, Typography as Font } from "@material-ui/core";
 import Link from "next/link";
 import { useEffect } from "react";
 import Page from "../layout/Page";
 import { Waypoint } from "react-waypoint";
 import { fadeIn } from "../util/animations";
+import Content from "../layout/Content";
 export default function Home() {
   const weedIcon = "/img/weed-icon.png";
   return (
-    <Page title="Home" className="Home">
+    <Content title="Home" className="Home">
       <div className="PlayerContainer">
         <iframe
           src="https://player.vimeo.com/video/392824756"
           frameBorder="0"
-          allow="autoplay; fullscreen"
+          allow="fullscreen"
           allowFullScreen
         />
       </div>
@@ -32,19 +28,22 @@ export default function Home() {
       </section>
 
       <Grid container justify="space-around" component="section" id="services">
-        <Grid
-          item
-          xs={12}
-          sm={3}
-          container
-          direction="column"
-          alignContent="center"
-        >
-          <img src={weedIcon} />
-          <Font align="center" variant="h5">
-            Subscribe
-          </Font>
-        </Grid>
+        <Link href="/get-started">
+          <Grid
+            item
+            xs={12}
+            sm={3}
+            container
+            direction="column"
+            alignContent="center"
+          >
+            <img src={weedIcon} />
+            <Font align="center" variant="h5">
+              Subscribe
+            </Font>
+          </Grid>
+        </Link>
+
         <Link href="/advertise">
           <Grid
             item
@@ -81,6 +80,6 @@ export default function Home() {
           <img />
         </a>
       </section>
-    </Page>
+    </Content>
   );
 }

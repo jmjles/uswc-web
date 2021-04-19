@@ -1,11 +1,11 @@
 import Wip from "../components/Wip";
-import Page from "../layout/Page";
+import Content from "../layout/Content";
 
 const Broadcast = () => {
   return (
-    <Page title="Broadcast" className="Broadcast">
+    <Content title="Broadcast" className="Broadcast">
       <Wip />
-    </Page>
+    </Content>
   );
 };
 

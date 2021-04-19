@@ -1,11 +1,13 @@
 import { Typography as Font } from "@material-ui/core";
+import { useRouter } from "next/router";
 const Video = ({ vid, ep: [ep, setEp], series }) => {
+  const router = useRouter();
   const handleClick = (place) => {
     if (place === "Previously") {
-      localStorage.setItem("vidId", series[ep - 1].resource_key);
+      router.push(`/watch/${series[ep - 1].resource_key}`);
       setEp(ep - 1);
     } else {
-      localStorage.setItem("vidId", series[ep + 1].resource_key);
+      router.push(`/watch/${series[ep + 1].resource_key}`);
       setEp(ep + 1);
     }
   };

@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import Page from '../layout/Page'
+import Content from '../layout/Content'
 
 import * as gtag from '../lib/gtag'
 
@@ -24,7 +24,7 @@ export default class Contact extends Component {
 
   render() {
     return (
-      <Page>
+      <Content>
         <h1>This is the Contact page</h1>
         <form onSubmit={this.handleSubmit}>
           <label>
@@ -33,7 +33,7 @@ export default class Contact extends Component {
           </label>
           <button type="submit">submit</button>
         </form>
-      </Page>
+      </Content>
     )
   }
 }

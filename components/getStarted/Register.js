@@ -1,8 +1,18 @@
-import { Button, TextField, Typography as Font } from "@material-ui/core";
+import {
+  Button,
+  CircularProgress,
+  TextField,
+  Typography as Font,
+} from "@material-ui/core";
 import { useState } from "react";
 import { server } from "../../util/axios";
 
-const Register = ({ style }) => {
+const Register = ({
+  style,
+  type: [type, setType],
+  token: [token, setToken],
+  user: [user, setUser],
+}) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -10,6 +20,9 @@ const Register = ({ style }) => {
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const [tel, setTel] = useState("");
+
+  const [loading, setLoading] = useState(false);
+
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
       case "firstName":
@@ -39,17 +52,19 @@ const Register = ({ style }) => {
     console.log(name, value);
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     if (password === confirm) {
       try {
-        const res = await server.post("/user/register", {
+        const res = await server.post("/auth/register", {
           firstName,
           lastName,
           email,
+          username,
           password,
           tel,
         });
-        console.log(res);
+        setToken(res.data.token);
       } catch (er) {
         console.log(er.response);
       }
@@ -57,6 +72,10 @@ const Register = ({ style }) => {
   };
   return (
     <form className="Register" style={style && style} onSubmit={handleSubmit}>
+      <Font variant="h1">Register</Font>
+      <div style={loading ? { textAlign: "center" } : { display: "none" }}>
+        <CircularProgress color="primary" hidden={loading} />
+      </div>
       <TextField
         name="firstName"
         type="text"
@@ -103,7 +122,7 @@ const Register = ({ style }) => {
       />
       <TextField
         name="password"
-        type="text"
+        type="password"
         required
         placeholder="Password"
         variant="standard"
@@ -114,7 +133,7 @@ const Register = ({ style }) => {
       />
       <TextField
         name="confirm"
-        type="text"
+        type="password"
         required
         placeholder="Confirm Password"
         variant="standard"
@@ -137,6 +156,10 @@ const Register = ({ style }) => {
       <Button type="submit" variant="contained" color="primary">
         <Font variant="button">Submit</Font>
       </Button>
+      <Font variant="body2">
+        Already have an account? Click{" "}
+        <b onClick={() => setType("login")}>here</b>
+      </Font>
     </form>
   );
 };

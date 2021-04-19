@@ -3,38 +3,29 @@ import {
   createStyles,
   Typography as Font,
 } from "@material-ui/core";
+import { Facebook, Twitter } from "@material-ui/icons";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import VideoTimeline from "../components/episodeTimeline/VideoTimeline";
-import Page from "../layout/Page";
+import VideoTimeline from "../../../components/episodeTimeline/VideoTimeline";
+import Content from "../../../layout/Content";
 
 const Watch = ({ videoLoading, videos }) => {
-  const history = useRouter();
   const [uri, setUri] = useState("");
-  const [videoKey, setVideoKey] = useState(undefined);
   const [selected, setSelected] = useState({});
   const [series, setSeries] = useState([]);
   const [title, setTitle] = useState("");
   const [currentEp, setCurrentEp] = useState(0);
-  useEffect(() => {
-    const id = localStorage.getItem("vidId");
-    if (id !== videoKey) {
-      setVideoKey(id);
-    }
-  }, [videoKey, currentEp]);
+  const [url,setURL] = useState("")
 
+  const router = useRouter();
+  const { id } = router.query;
+  
+  useEffect(()=>{
+setURL(window.location.href)
+  },[currentEp])
   useEffect(() => {
-    const id = localStorage.getItem("vidId");
-    if (!id) {
-      history.push("/browse");
-    }
-  });
-
-  useEffect(() => {
-    if (!videoLoading && videoKey) {
-      const selectedVid = videos.find(
-        (video) => video.resource_key === videoKey
-      );
+    if (!videoLoading && id) {
+      const selectedVid = videos.find((video) => video.resource_key === id);
       let list = [];
       let ser = "";
       selectedVid.tags.forEach((tag) => {
@@ -61,10 +52,10 @@ const Watch = ({ videoLoading, videos }) => {
       setSeries(list);
       setUri(`https://player.vimeo.com/video/${selectedVid.uri.split("/")[2]}`);
     }
-  }, [videoKey, videoLoading]);
+  }, [currentEp, videoLoading]);
 
   return (
-    <Page title="Watch" className="Watch">
+    <Content title="Watch" className="Watch">
       <CircularProgress style={!videoLoading ? style.hidden : {}} />
       <div className="PlayerContainer">
         <iframe
@@ -76,12 +67,30 @@ const Watch = ({ videoLoading, videos }) => {
           allow="fullscreen"
         />
       </div>
+      <div>
+         <a
+          href={`https://www.facebook.com/sharer.php?t=I'm watching ${
+            title || selected.name
+          } at U.S. Weed Channel!&u=${url}`}
+          target="_blank"
+        >
+          <Facebook color="primary" />
+        </a>
+        <a
+          href={`https://twitter.com/share?url=I'm watching ${
+            title || selected.name
+          } at U.S. Weed Channel! ${url}`}
+          target="_blank"
+        >
+          <Twitter color="primary" />
+        </a>
+      </div>
       <section>
         <Font variant="h2">{title}</Font>
         <Font variant="body1">{selected.description}</Font>
       </section>
       <VideoTimeline series={series} ep={[currentEp, setCurrentEp]} />
-    </Page>
+    </Content>
   );
 };
 const style = createStyles({

@@ -2,13 +2,20 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { server } from "../util/axios";
 import * as gtag from "../lib/gtag";
-import { CssBaseline, ThemeProvider, StylesProvider } from "@material-ui/core";
+import {
+  CssBaseline,
+  StylesProvider,
+  MuiThemeProvider,
+} from "@material-ui/core";
 import theme from "../public/styles/theme";
 import "../public/styles/index.css";
+import Page from "../layout/Page";
 const App = ({ Component, pageProps }) => {
   const [videos, setVideos] = useState([]);
   const [list, setList] = useState([]);
   const [videoLoading, setVideoLoading] = useState(false);
+  const [token, setToken] = useState(null);
+  const [user, setUser] = useState({});
   const router = useRouter();
 
   //* Google Analytics
@@ -21,6 +28,26 @@ const App = ({ Component, pageProps }) => {
       router.events.off("routeChangeComplete", handleRouteChange);
     };
   }, [router.events]);
+
+  //* Set Token
+  useEffect(() => {
+    const verifyToken = async () => {
+      try {
+        const t = localStorage.getItem("token");
+        if (token) {
+          localStorage.setItem("token", token);
+          const u = await server.post("/auth/verify", { token });
+          console.log(u)
+          setUser(u.data);
+        } else if (!token && t && t !== token) setToken(t);
+      } catch (er) {
+        setUser({});
+        localStorage.removeItem("token");
+        console.log(er.message);
+      }
+    };
+    verifyToken();
+  }, [token]);
 
   //* Get Videos and Organize them in a list
   useEffect(() => {
@@ -91,18 +118,22 @@ const App = ({ Component, pageProps }) => {
   }, []);
 
   return (
-    <ThemeProvider theme={theme}>
+    <MuiThemeProvider theme={theme}>
       <StylesProvider injectFirst>
         <CssBaseline>
-          <Component
-            {...pageProps}
-            list={list}
-            videos={videos}
-            videoLoading={videoLoading}
-          />
+          <Page token={token} user={[user, setUser]}>
+            <Component
+              {...pageProps}
+              list={list}
+              videos={videos}
+              videoLoading={videoLoading}
+              token={[token, setToken]}
+              user={[user, setUser]}
+            />
+          </Page>
         </CssBaseline>
       </StylesProvider>
-    </ThemeProvider>
+    </MuiThemeProvider>
   );
 };
 

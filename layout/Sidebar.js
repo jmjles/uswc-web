@@ -1,17 +1,31 @@
 import { Button, Grid, Typography as Font } from "@material-ui/core";
 import Link from "next/link";
-const Sidebar = () => {
+const Sidebar = ({ token }) => {
   const removeStyle = () => {
-    console.log("in")
     document.querySelector("body").removeAttribute("style");
   };
   return (
     <aside className="Sidebar">
       <Grid container direction="column" alignItems="center">
-        <Grid item >
+        <Grid item>
           <Link href="/get-started">
-            <Button color="primary" variant="outlined" onClick={removeStyle}>
+            <Button
+              color="primary"
+              variant="outlined"
+              onClick={removeStyle}
+              style={token ? { display: "none" } : null}
+            >
               <Font variant="button">Get Started</Font>
+            </Button>
+          </Link>
+          <Link href="/dashboard">
+            <Button
+              color="primary"
+              variant="outlined"
+              onClick={removeStyle}
+              style={!token ? { display: "none" } : null}
+            >
+              <Font variant="button">Dashboard</Font>
             </Button>
           </Link>
         </Grid>

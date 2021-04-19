@@ -1,0 +1,99 @@
+.NewVideo {
+  @keyframes enter {
+    from {
+      transform: scale(0) translate(-50%, -50%);
+      opacity: 0;
+      visibility: hidden;
+    }
+    to {
+      transform: scale(1) translate(-50%, -50%);
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  @keyframes exit {
+    from {
+      opacity: 1;
+      visibility: visible;
+    }
+    40% {
+      transform: translate(-50%, -60%);
+      opacity: 1;
+      visibility: visible;
+    }
+    to {
+      opacity: 0;
+      transform: translate(10%, -60%);
+      visibility: hidden;
+    }
+  }
+  @keyframes back {
+    from {
+      opacity: 1;
+      visibility: visible;
+    }
+    40% {
+      transform: translate(-50%, -60%);
+      opacity: 1;
+      visibility: visible;
+    }
+    to {
+      opacity: 0;
+      transform: translate(-100%, -60%);
+      visibility: hidden;
+    }
+  }
+  .Enter {
+    animation: enter 1s forwards 1s;
+  }
+  .Exit {
+    animation: exit 1s forwards;
+  }
+  .Back {
+    animation: back 1s forwards;
+  }
+  .Hidden {
+    display: none;
+  }
+  form {
+    z-index: 10;
+    margin: 0 auto;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    background-color: $darkBackground;
+    color: #fff;
+    border-radius: 5px;
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    top: 50%;
+    left: 50%;
+    transform-origin: 0 0;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    div {
+      margin-bottom: 10px;
+    }
+    input {
+      color: #fff;
+    }
+    ::-webkit-calendar-picker-indicator {
+      filter: invert(1);
+    }
+    textarea {
+      color: #fff;
+    }
+    label {
+      display: flex;
+      margin-left: 0px;
+      margin-right: auto;
+    }
+    b {
+      cursor: pointer;
+    }
+  }
+  .MuiSelect-select {
+    color: #fff;
+  }
+}

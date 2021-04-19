@@ -478,11 +478,27 @@ footer #socials {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  background-color: #292f36;
+  color: #fff;
+  border-radius: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   padding: 20px;
 }
 
+.Register input {
+  color: #fff;
+}
+
 .Register button {
-  margin-top: 20px;
+  margin: 20px 0;
+}
+
+.Register b {
+  cursor: pointer;
 }
 
 .Login {
@@ -495,10 +511,421 @@ footer #socials {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  background-color: #292f36;
+  color: #fff;
+  border-radius: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   padding: 20px;
 }
 
+.Login input {
+  color: #fff;
+}
+
 .Login button {
-  margin-top: 20px;
+  margin: 20px 0;
+}
+
+.Login b {
+  cursor: pointer;
+}
+
+.GetStarted h1 {
+  margin-bottom: 20px;
+}
+
+.GetStarted .buttonContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 300px;
+  margin: 0 auto;
+}
+
+@-webkit-keyframes enter {
+  from {
+    -webkit-transform: scale(0) translate(-50%, -50%);
+            transform: scale(0) translate(-50%, -50%);
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    -webkit-transform: scale(1) translate(-50%, -50%);
+            transform: scale(1) translate(-50%, -50%);
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes enter {
+  from {
+    -webkit-transform: scale(0) translate(-50%, -50%);
+            transform: scale(0) translate(-50%, -50%);
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    -webkit-transform: scale(1) translate(-50%, -50%);
+            transform: scale(1) translate(-50%, -50%);
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@-webkit-keyframes exit {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  40% {
+    -webkit-transform: translate(-50%, -60%);
+            transform: translate(-50%, -60%);
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    -webkit-transform: translate(10%, -60%);
+            transform: translate(10%, -60%);
+    visibility: hidden;
+  }
+}
+
+@keyframes exit {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  40% {
+    -webkit-transform: translate(-50%, -60%);
+            transform: translate(-50%, -60%);
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    -webkit-transform: translate(10%, -60%);
+            transform: translate(10%, -60%);
+    visibility: hidden;
+  }
+}
+
+@-webkit-keyframes back {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  40% {
+    -webkit-transform: translate(-50%, -60%);
+            transform: translate(-50%, -60%);
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    -webkit-transform: translate(-100%, -60%);
+            transform: translate(-100%, -60%);
+    visibility: hidden;
+  }
+}
+
+@keyframes back {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  40% {
+    -webkit-transform: translate(-50%, -60%);
+            transform: translate(-50%, -60%);
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    -webkit-transform: translate(-100%, -60%);
+            transform: translate(-100%, -60%);
+    visibility: hidden;
+  }
+}
+
+.NewVideo .Enter {
+  -webkit-animation: enter 1s forwards 1s;
+          animation: enter 1s forwards 1s;
+}
+
+.NewVideo .Exit {
+  -webkit-animation: exit 1s forwards;
+          animation: exit 1s forwards;
+}
+
+.NewVideo .Back {
+  -webkit-animation: back 1s forwards;
+          animation: back 1s forwards;
+}
+
+.NewVideo .Hidden {
+  display: none;
+}
+
+.NewVideo form {
+  z-index: 10;
+  margin: 0 auto;
+  max-width: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #292f36;
+  color: #fff;
+  border-radius: 5px;
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  top: 50%;
+  left: 50%;
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  padding: 20px;
+}
+
+.NewVideo form div {
+  margin-bottom: 10px;
+}
+
+.NewVideo form input {
+  color: #fff;
+}
+
+.NewVideo form ::-webkit-calendar-picker-indicator {
+  -webkit-filter: invert(1);
+          filter: invert(1);
+}
+
+.NewVideo form textarea {
+  color: #fff;
+}
+
+.NewVideo form label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 0px;
+  margin-right: auto;
+}
+
+.NewVideo form b {
+  cursor: pointer;
+}
+
+.NewVideo .MuiSelect-select {
+  color: #fff;
+}
+
+.Modal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.Modal form {
+  overflow: hidden;
+  padding: 20px;
+  background-color: #292f36;
+  color: #fff;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  visibility: hidden;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  opacity: 0;
+  display: none;
+}
+
+.Modal form input,
+.Modal form textarea {
+  color: #fff;
+}
+
+.Modal form label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 0px;
+  margin-right: auto;
+}
+
+.Modal form label.MuiFormLabel-root {
+  color: darkgray;
+}
+
+.Modal form label.Mui-focused {
+  color: #70ae6e;
+}
+
+.Modal form .MuiInput-root {
+  margin-bottom: 10px;
+}
+
+.Modal form .MuiSelect-select,
+.Modal form .MuiSelect-icon {
+  color: #fff;
+}
+
+.Modal form ::-webkit-calendar-picker-indicator {
+  -webkit-filter: invert(1);
+          filter: invert(1);
+}
+
+.Modal form .Nav {
+  padding-top: 20px;
+}
+
+.Modal .Active {
+  opacity: 1;
+  visibility: visible;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.DeleteModal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.DeleteModal .Content {
+  overflow: hidden;
+  padding: 20px;
+  background-color: #292f36;
+  color: #fff;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.Editor {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.Editor .Content {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  min-height: 300px;
+  overflow: hidden;
+}
+
+.Editor .Content .Title {
+  margin-bottom: 20px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 400px;
+}
+
+.Editor .Content img {
+  width: 75px;
+}
+
+.Editor form {
+  overflow: hidden;
+  padding: 20px;
+  background-color: #292f36;
+  color: #fff;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  visibility: hidden;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  opacity: 0;
+  display: none;
+}
+
+.Editor form input,
+.Editor form textarea {
+  color: #fff;
+}
+
+.Editor form label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 0px;
+  margin-right: auto;
+}
+
+.Editor form label.MuiFormLabel-root {
+  color: darkgray;
+}
+
+.Editor form label.Mui-focused {
+  color: #70ae6e;
+}
+
+.Editor form .MuiInput-root {
+  margin-bottom: 10px;
+}
+
+.Editor form .MuiSelect-select,
+.Editor form .MuiSelect-icon {
+  color: #fff;
+}
+
+.Editor form ::-webkit-calendar-picker-indicator {
+  -webkit-filter: invert(1);
+          filter: invert(1);
+}
+
+.Editor form .Nav {
+  padding-top: 20px;
+}
+
+.Editor .Active {
+  opacity: 1;
+  visibility: visible;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 /*# sourceMappingURL=index.css.map */

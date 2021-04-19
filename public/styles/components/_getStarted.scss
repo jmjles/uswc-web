@@ -1,0 +1,12 @@
+.GetStarted {
+  h1 {
+    margin-bottom: 20px;
+  }
+  .buttonContainer {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    width: 300px;
+    margin: 0 auto;
+  }
+}

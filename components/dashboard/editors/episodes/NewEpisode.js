@@ -176,7 +176,7 @@ const NewEpisode = ({ series = [], refresh }) => {
         formData.append("subscription", subscription);
         formData.append("file", file);
         formData.append("thumbnail", thumbnail);
-        formData.append("trick", trick);
+        if (trick) formData.append("trick", trick);
         formData.append("type", "episode");
         formData.append("episode", episode);
         formData.append("seriesId", seriesId);

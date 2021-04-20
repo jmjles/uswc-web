@@ -132,7 +132,7 @@ const NewMovie = ({ refresh }) => {
 
         formData.append("file", file);
         formData.append("thumbnail", thumbnail);
-        formData.append("trick", trick);
+        if (trick) formData.append("trick", trick);
 
         formData.append("releaseDate", releaseDate);
         formData.append("dateAdded", dateAdded);

@@ -69,7 +69,6 @@ const EpisodeForm3 = ({
         type="file"
         color="primary"
         name="trick"
-        required={!edit}
         onChange={handleChange}
       />
       <Grid container alignItems="flex-end">

@@ -51,6 +51,7 @@ function EditorDashboard(props) {
     try {
       if (!l) handleLoading();
       const m = await server("/video");
+      console.log(m.data)
       setM(m.data);
       if (l) handleLoading();
     } catch (er) {

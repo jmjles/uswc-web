@@ -115,8 +115,8 @@ const NewSeries = ({refresh}) => {
         setLoading(true);
         const formData = new FormData();
         formData.append("title", title);
-        formData.append("shortDesc", shortDesc);
-        formData.append("longDesc", longDesc);
+        formData.append("short_desc", shortDesc);
+        formData.append("long_desc", longDesc);
         formData.append("subscription", subscription);
         formData.append("thumbnail", thumbnail);
         formData.append("releaseDate", releaseDate);

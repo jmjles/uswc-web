@@ -148,8 +148,8 @@ const EditEpisode = ({ e, modal, handleShow, refresh, series = [] }) => {
         const duration = hours * 60 * 60 + minutes * 60 + 1 * seconds;
         const formData = new FormData();
         if (title !== e.title) formData.append("title", title);
-        if (shortDesc !== e.short_desc) formData.append("shortDesc", shortDesc);
-        if (longDesc !== e.long_desc) formData.append("longDesc", longDesc);
+        if (shortDesc !== e.short_desc) formData.append("short_desc", shortDesc);
+        if (longDesc !== e.long_desc) formData.append("long_desc", longDesc);
         if (duration !== e.duration) formData.append("duration", duration);
 
         if (language !== e.language) formData.append("language", language);
@@ -174,10 +174,9 @@ const EditEpisode = ({ e, modal, handleShow, refresh, series = [] }) => {
           tags.forEach((t) => formData.append("tags", t));
         if (Array.toString(genres) !== Array.toString(e.genres))
           genres.forEach((g) => formData.append("genres", g));
-        console.log(e.id);
-        console.log(e._id);
-        console.log(e);
+
         formData.append("id", e._id);
+
         await server.put("/video", formData, {
           headers: { "Content-Type": "multipart/form-data" },
         });
@@ -239,6 +238,7 @@ const EditEpisode = ({ e, modal, handleShow, refresh, series = [] }) => {
     setLoading(false);
     setStep(1);
   };
+  
   const commonFields = { step: [step, setStep], handleChange, handleSubmit };
   return (
     <Modal

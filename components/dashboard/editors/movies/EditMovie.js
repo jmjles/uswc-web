@@ -136,8 +136,8 @@ const EditMovie = ({ m, modal, handleShow, refresh }) => {
         const duration = hours * 60 * 60 + minutes * 60 + 1 * seconds;
         const formData = new FormData();
         if (title !== m.title) formData.append("title", title);
-        if (shortDesc !== m.short_desc) formData.append("shortDesc", shortDesc);
-        if (longDesc !== m.long_desc) formData.append("longDesc", longDesc);
+        if (shortDesc !== m.short_desc) formData.append("short_desc", shortDesc);
+        if (longDesc !== m.long_desc) formData.append("long_desc", longDesc);
         if (duration !== m.duration) formData.append("duration", duration);
 
         if (language !== m.language) formData.append("language", language);

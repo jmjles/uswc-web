@@ -136,8 +136,8 @@ const EditVideo = ({ v, modal, handleShow, refresh }) => {
         const duration = hours * 60 * 60 + minutes * 60 + 1 * seconds;
         const formData = new FormData();
         if (title !== v.title) formData.append("title", title);
-        if (shortDesc !== v.short_desc) formData.append("shortDesc", shortDesc);
-        if (longDesc !== v.long_desc) formData.append("longDesc", longDesc);
+        if (shortDesc !== v.short_desc) formData.append("short_desc", shortDesc);
+        if (longDesc !== v.long_desc) formData.append("long_desc", longDesc);
         if (duration !== v.duration) formData.append("duration", duration);
 
         if (language !== v.language) formData.append("language", language);

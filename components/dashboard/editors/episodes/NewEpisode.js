@@ -169,8 +169,8 @@ const NewEpisode = ({ series = [], refresh }) => {
         const duration = hours * 60 * 60 + minutes * 60 + 1 * seconds;
         const formData = new FormData();
         formData.append("title", title);
-        formData.append("shortDesc", shortDesc);
-        formData.append("longDesc", longDesc);
+        formData.append("short_desc", shortDesc);
+        formData.append("long_desc", longDesc);
         formData.append("duration", duration);
         formData.append("language", language);
         formData.append("subscription", subscription);

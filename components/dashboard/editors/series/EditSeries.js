@@ -92,12 +92,12 @@ const EditSeries = ({ s, modal, handleShow, refresh }) => {
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
-      if (step === 3) {
+      if (step === 2) {
         setLoading(true);
         const formData = new FormData();
         if (title !== s.title) formData.append("title", title);
-        if (shortDesc !== s.short_desc) formData.append("shortDesc", shortDesc);
-        if (longDesc !== s.long_desc) formData.append("longDesc", longDesc);
+        if (shortDesc !== s.short_desc) formData.append("short_desc", shortDesc);
+        if (longDesc !== s.long_desc) formData.append("long_desc", longDesc);
 
         if (subscription !== s.subscription)
           formData.append("subscription", subscription);
@@ -198,6 +198,7 @@ const EditSeries = ({ s, modal, handleShow, refresh }) => {
             dateAdded={dateAdded}
             startDate={startDate}
             endDate={endDate}
+            edit
           />
         </>
       </Fade>

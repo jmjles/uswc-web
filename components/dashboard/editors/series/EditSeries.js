@@ -96,7 +96,8 @@ const EditSeries = ({ s, modal, handleShow, refresh }) => {
         setLoading(true);
         const formData = new FormData();
         if (title !== s.title) formData.append("title", title);
-        if (shortDesc !== s.short_desc) formData.append("short_desc", shortDesc);
+        if (shortDesc !== s.short_desc)
+          formData.append("short_desc", shortDesc);
         if (longDesc !== s.long_desc) formData.append("long_desc", longDesc);
 
         if (subscription !== s.subscription)
@@ -110,9 +111,10 @@ const EditSeries = ({ s, modal, handleShow, refresh }) => {
         if (startDate !== s.startDate) formData.append("startDate", startDate);
         if (endDate !== s.endDate) formData.append("endDate", endDate);
 
-        if (Array.toString(s.tags) !== Array.toString(tags))
+        if (s.tags.toString() !== tags.toString())
           tags.forEach((t) => formData.append("tags", t));
-        if (Array.toString(genres) !== Array.toString(s.genres))
+
+        if (s.genres.toString() !== genres.toString())
           genres.forEach((g) => formData.append("genres", g));
 
         formData.append("id", s._id);

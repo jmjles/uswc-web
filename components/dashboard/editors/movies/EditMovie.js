@@ -30,7 +30,7 @@ const EditMovie = ({ m, modal, handleShow, refresh }) => {
   );
   const [seconds, setSeconds] = useState(
     m.duration -
-      Math.floor(m.duration / 60 / 60)*60*60 -
+      Math.floor(m.duration / 60 / 60) * 60 * 60 -
       Math.floor(
         Math.floor(
           (m.duration - Math.floor(m.duration / 60 / 60) * 60 * 60) / 60
@@ -136,7 +136,8 @@ const EditMovie = ({ m, modal, handleShow, refresh }) => {
         const duration = hours * 60 * 60 + minutes * 60 + 1 * seconds;
         const formData = new FormData();
         if (title !== m.title) formData.append("title", title);
-        if (shortDesc !== m.short_desc) formData.append("short_desc", shortDesc);
+        if (shortDesc !== m.short_desc)
+          formData.append("short_desc", shortDesc);
         if (longDesc !== m.long_desc) formData.append("long_desc", longDesc);
         if (duration !== m.duration) formData.append("duration", duration);
 
@@ -155,10 +156,10 @@ const EditMovie = ({ m, modal, handleShow, refresh }) => {
         if (startDate !== m.startDate) formData.append("startDate", startDate);
         if (endDate !== m.endDate) formData.append("endDate", endDate);
 
-        if (Array.toString(m.tags) !== Array.toString(tags))
+        if (m.tags.toString() !== tags.toString())
           tags.forEach((t) => formData.append("tags", t));
 
-        if (Array.toString(genres) !== Array.toString(m.genres))
+        if (m.genres.toString() !== genres.toString())
           genres.forEach((g) => formData.append("genres", g));
 
         formData.append("id", m._id);

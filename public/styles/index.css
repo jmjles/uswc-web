@@ -468,9 +468,35 @@ footer #socials {
   text-decoration: none;
 }
 
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .Register {
-  margin: 0 auto;
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  overflow: hidden;
+  padding: 20px;
   max-width: 300px;
+  background-color: #292f36;
+  color: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -478,32 +504,75 @@ footer #socials {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  background-color: #292f36;
-  color: #fff;
-  border-radius: 5px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  padding: 20px;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-animation: forwards 1s fadeIn;
+          animation: forwards 1s fadeIn;
 }
 
-.Register input {
+.Register input,
+.Register textarea {
+  color: #fff;
+}
+
+.Register .MuiInputAdornment-positionEnd button {
+  margin-bottom: initial;
+  color: #70ae6e;
+}
+
+.Register label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 0px;
+  margin-right: auto;
+}
+
+.Register label.MuiFormLabel-root {
+  color: darkgray;
+}
+
+.Register label.Mui-focused {
+  color: #70ae6e;
+}
+
+.Register .MuiInput-root {
+  margin-bottom: 10px;
+}
+
+.Register .MuiSelect-select,
+.Register .MuiSelect-icon {
   color: #fff;
 }
 
 .Register button {
-  margin: 20px 0;
+  margin-bottom: 20px;
 }
 
 .Register b {
   cursor: pointer;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .Login {
-  margin: 0 auto;
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  overflow: hidden;
+  padding: 20px;
   max-width: 300px;
+  background-color: #292f36;
+  color: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -511,23 +580,49 @@ footer #socials {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  background-color: #292f36;
-  color: #fff;
-  border-radius: 5px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  padding: 20px;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-animation: forwards 1s fadeIn;
+          animation: forwards 1s fadeIn;
 }
 
-.Login input {
+.Login input,
+.Login textarea {
+  color: #fff;
+}
+
+.Login label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 0px;
+  margin-right: auto;
+}
+
+.Login .MuiInputAdornment-positionEnd button {
+  margin-bottom: initial;
+  color: #70ae6e;
+}
+
+.Login label.MuiFormLabel-root {
+  color: darkgray;
+}
+
+.Login label.Mui-focused {
+  color: #70ae6e;
+}
+
+.Login .MuiInput-root {
+  margin-bottom: 10px;
+}
+
+.Login .MuiSelect-select,
+.Login .MuiSelect-icon {
   color: #fff;
 }
 
 .Login button {
-  margin: 20px 0;
+  margin-bottom: 20px;
 }
 
 .Login b {
@@ -922,6 +1017,110 @@ footer #socials {
 }
 
 .Editor .Active {
+  opacity: 1;
+  visibility: visible;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.Blog iframe {
+  position: absolute;
+  width: 100%;
+  top: 111.79px;
+  left: 0px;
+  height: calc(100vh - 111.79px - 75.2px);
+}
+
+.Dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.Dashboard .Content {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  min-height: 300px;
+  overflow: hidden;
+}
+
+.Dashboard .Content .Title {
+  margin-bottom: 20px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 400px;
+}
+
+.Dashboard .Content img {
+  width: 75px;
+}
+
+.Dashboard.Parent .Content {
+  width: 100%;
+  max-width: unset;
+}
+
+.Dashboard form {
+  overflow: hidden;
+  padding: 20px;
+  background-color: #292f36;
+  color: #fff;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  visibility: hidden;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  opacity: 0;
+  display: none;
+}
+
+.Dashboard form input,
+.Dashboard form textarea {
+  color: #fff;
+}
+
+.Dashboard form label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 0px;
+  margin-right: auto;
+}
+
+.Dashboard form label.MuiFormLabel-root {
+  color: darkgray;
+}
+
+.Dashboard form label.Mui-focused {
+  color: #70ae6e;
+}
+
+.Dashboard form .MuiInput-root {
+  margin-bottom: 10px;
+}
+
+.Dashboard form .MuiSelect-select,
+.Dashboard form .MuiSelect-icon {
+  color: #fff;
+}
+
+.Dashboard form ::-webkit-calendar-picker-indicator {
+  -webkit-filter: invert(1);
+          filter: invert(1);
+}
+
+.Dashboard form .Nav {
+  padding-top: 20px;
+}
+
+.Dashboard .Active {
   opacity: 1;
   visibility: visible;
   display: -webkit-box;

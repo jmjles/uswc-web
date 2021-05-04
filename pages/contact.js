@@ -1,6 +1,6 @@
 import { Component } from 'react'
 import Content from '../layout/Content'
-
+import React from "react";
 import * as gtag from '../lib/gtag'
 
 export default class Contact extends Component {

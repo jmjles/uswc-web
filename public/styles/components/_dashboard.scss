@@ -1,0 +1,78 @@
+@mixin Form {
+  form {
+    overflow: hidden;
+    padding: 20px;
+    background-color: $darkBackground;
+    color: #fff;
+    flex-direction: column;
+    align-content: center;
+    visibility: hidden;
+    transition: all 0.5s;
+    opacity: 0;
+    display: none;
+    input,
+    textarea {
+      color: #fff;
+    }
+    label {
+      display: flex;
+      margin-left: 0px;
+      margin-right: auto;
+    }
+    label.MuiFormLabel-root {
+      color: darkgray;
+    }
+    label.Mui-focused {
+      color: $bud;
+    }
+    .MuiInput-root {
+      margin-bottom: 10px;
+    }
+    .MuiSelect-select,
+    .MuiSelect-icon {
+      color: #fff;
+    }
+    ::-webkit-calendar-picker-indicator {
+      filter: invert(1);
+    }
+    .Nav {
+      padding-top: 20px;
+    }
+  }
+  .Active {
+    opacity: 1;
+    visibility: visible;
+    display: flex;
+  }
+}
+
+.Dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  .Content {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    min-height: 300px;
+    overflow: hidden;
+    .Title {
+      margin-bottom: 20px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      max-width: 400px;
+    }
+    img {
+      width: 75px;
+    }
+  }
+  &.Parent {
+    .Content {
+      width: 100%;
+      max-width: unset;
+    }
+  }
+  @include Form();
+}

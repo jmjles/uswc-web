@@ -1,6 +1,6 @@
 import { Typography as Font } from "@material-ui/core";
 import Content from "../layout/Content";
-
+import React from "react";
 const Promo = () => {
   return (
     <Content title="1212" className="MCS">

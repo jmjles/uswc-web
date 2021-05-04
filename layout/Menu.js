@@ -10,7 +10,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { sidebarAni } from "../util/animations";
 
-const Menu = ({ token , user:[user,s] }) => {
+const Menu = ({ user: [user, s] }) => {
   const [open, setOpen] = useState(false);
   const handleMenu = () => setOpen(!open);
   const handleSidebar = () => sidebarAni(handleMenu);
@@ -23,7 +23,7 @@ const Menu = ({ token , user:[user,s] }) => {
       </Grid>
       <Grid item className="TabletMenu">
         <Link href="/get-started">
-          <Button color="primary" size="large" style={token && style.hidden}>
+          <Button color="primary" size="large" style={user._id && style.hidden}>
             <Font variant="button">Get Started</Font>
           </Button>
         </Link>
@@ -31,7 +31,7 @@ const Menu = ({ token , user:[user,s] }) => {
           <Button
             color="primary"
             size="large"
-            style={!token ? style.hidden : null}
+            style={!user._id ? style.hidden : null}
           >
             <Font variant="button">Dashboard</Font>
           </Button>
@@ -48,6 +48,13 @@ const Menu = ({ token , user:[user,s] }) => {
         <Link href="/swag">
           <Button color="primary" size="large">
             <Font variant="button">Swag</Font>
+          </Button>
+        </Link>
+      </Grid>
+      <Grid item className="TabletMenu">
+        <Link href="/blog">
+          <Button color="primary" size="large">
+            <Font variant="button">Blog</Font>
           </Button>
         </Link>
       </Grid>

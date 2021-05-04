@@ -2,6 +2,7 @@ import Category from "../components/videos/Category";
 import { CircularProgress, createStyles } from "@material-ui/core";
 import Featured from "../components/videos/Featured";
 import Content from "../layout/Content";
+import React from "react";
 const browse = ({ list, videoLoading }) => {
   return (
     <Content title="Browse" className="Browse">

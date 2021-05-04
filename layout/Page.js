@@ -23,8 +23,8 @@ const Page = (props) => {
   };
   return (
     <div className="PageLayout">
-      <Header token={props.token} user={props.user}/>
-      <Sidebar token={props.token} />
+      <Header user={props.user} />
+      <Sidebar user={props.user} />
       <Modal open={open} onClose={handleClose}>
         <div className="LegalModal">
           <Error color="primary" />

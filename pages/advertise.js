@@ -1,6 +1,6 @@
 import { Button, Typography } from "@material-ui/core";
 import Content from "../layout/Content";
-
+import React from "react";
 const Advertise = () => {
   return (
     <Content title="Advertise" className="Advertise">

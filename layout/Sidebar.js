@@ -1,6 +1,6 @@
 import { Button, Grid, Typography as Font } from "@material-ui/core";
 import Link from "next/link";
-const Sidebar = ({ token }) => {
+const Sidebar = ({ user }) => {
   const removeStyle = () => {
     document.querySelector("body").removeAttribute("style");
   };
@@ -13,7 +13,7 @@ const Sidebar = ({ token }) => {
               color="primary"
               variant="outlined"
               onClick={removeStyle}
-              style={token ? { display: "none" } : null}
+              style={user[0]._id ? { display: "none" } : null}
             >
               <Font variant="button">Get Started</Font>
             </Button>
@@ -23,7 +23,7 @@ const Sidebar = ({ token }) => {
               color="primary"
               variant="outlined"
               onClick={removeStyle}
-              style={!token ? { display: "none" } : null}
+              style={!user[0]._id ? { display: "none" } : null}
             >
               <Font variant="button">Dashboard</Font>
             </Button>

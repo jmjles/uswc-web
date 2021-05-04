@@ -1,9 +1,8 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
-
 import { GA_TRACKING_ID } from "../lib/gtag";
-
 import { ServerStyleSheets } from "@material-ui/styles";
 import theme from "../public/styles/theme";
+import React from "react";
 export default class MyDocument extends Document {
   render() {
     return (

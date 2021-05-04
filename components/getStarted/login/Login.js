@@ -6,56 +6,28 @@ import {
   CircularProgress,
 } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
-import { useRouter } from "next/router";
-import { useState } from "react";
-import { server } from "../../util/axios";
-const Login = ({ style, type: [type, setType], token: [token, setToken] }) => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const router = useRouter();
+import LoginF from "./LoginF";
 
-  const handleChange = ({ target: { name, value } }) => {
-    if (error) setError(false);
-    switch (name) {
-      case "username":
-        setUsername(value);
-        break;
-      case "password":
-        setPassword(value);
-        break;
-      default:
-        console.log("Unknown value");
-    }
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      setLoading(true);
-      const res = await server.post("/auth/login", { username, password });
-      setLoading(false);
-      setToken(res.data.token);
-      router.push(`/${res.data.user.type}-dashboard`);
-    } catch (er) {
-      setError(true);
-      setLoading(false);
-      console.log(er.response);
-    }
-  };
+const Login = ({ style, type: [type, setType], user }) => {
+  const {
+    username,
+    loading,
+    password,
+    error,
+    handleSubmit,
+    handleChange,
+  } = LoginF({ user });
   return (
     <form className="Login" style={style && style} onSubmit={handleSubmit}>
       <Font variant="h1">Login</Font>
       <div style={loading ? { textAlign: "center" } : { display: "none" }}>
         <CircularProgress color="primary" hidden={loading} />
       </div>
-
       <TextField
         name="username"
         type="text"
         required
-        placeholder="Username"
+        label="Username"
         variant="standard"
         color="primary"
         variant="standard"
@@ -66,7 +38,7 @@ const Login = ({ style, type: [type, setType], token: [token, setToken] }) => {
         name="password"
         type="password"
         required
-        placeholder="Password"
+        label="Password"
         variant="standard"
         color="primary"
         variant="standard"
@@ -86,4 +58,5 @@ const Login = ({ style, type: [type, setType], token: [token, setToken] }) => {
     </form>
   );
 };
+
 export default Login;

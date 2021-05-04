@@ -20,7 +20,11 @@ const AdminDashboardF = (props) => {
       />
     )
   );
-  const settings = new AdminItem("Settings", "settings", <Settings />);
+  const settings = new AdminItem(
+    "Settings",
+    "settings",
+    <Settings {...props} />
+  );
   const adminMenu = [editor, settings];
   return { menu: adminMenu, l: loading, fetchError };
 };

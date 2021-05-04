@@ -136,7 +136,8 @@ const EditVideo = ({ v, modal, handleShow, refresh }) => {
         const duration = hours * 60 * 60 + minutes * 60 + 1 * seconds;
         const formData = new FormData();
         if (title !== v.title) formData.append("title", title);
-        if (shortDesc !== v.short_desc) formData.append("short_desc", shortDesc);
+        if (shortDesc !== v.short_desc)
+          formData.append("short_desc", shortDesc);
         if (longDesc !== v.long_desc) formData.append("long_desc", longDesc);
         if (duration !== v.duration) formData.append("duration", duration);
 
@@ -155,10 +156,10 @@ const EditVideo = ({ v, modal, handleShow, refresh }) => {
         if (startDate !== v.startDate) formData.append("startDate", startDate);
         if (endDate !== v.endDate) formData.append("endDate", endDate);
 
-        if (Array.toString(v.tags) !== Array.toString(tags))
+        if (v.tags.toString() !== tags.toString())
           tags.forEach((t) => formData.append("tags", t));
 
-        if (Array.toString(genres) !== Array.toString(v.genres))
+        if (v.genres.toString() !== genres.toString())
           genres.forEach((g) => formData.append("genres", g));
 
         formData.append("id", v._id);

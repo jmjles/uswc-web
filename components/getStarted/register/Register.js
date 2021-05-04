@@ -1,75 +1,33 @@
 import {
   Button,
   CircularProgress,
+  IconButton,
+  InputAdornment,
   TextField,
   Typography as Font,
 } from "@material-ui/core";
-import { useState } from "react";
-import { server } from "../../util/axios";
+import { Visibility, VisibilityOff } from "@material-ui/icons";
+import RegisterF from "./RegisterF";
 
-const Register = ({
-  style,
-  type: [type, setType],
-  token: [token, setToken],
-  user: [user, setUser],
-}) => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirm, setConfirm] = useState("");
-  const [tel, setTel] = useState("");
-
-  const [loading, setLoading] = useState(false);
-
-  const handleChange = ({ target: { name, value } }) => {
-    switch (name) {
-      case "firstName":
-        setFirstName(value);
-        break;
-      case "lastName":
-        setLastName(value);
-        break;
-      case "email":
-        setEmail(value);
-        break;
-      case "username":
-        setUsername(value);
-        break;
-      case "password":
-        setPassword(value);
-        break;
-      case "confirm":
-        setConfirm(value);
-        break;
-      case "tel":
-        setTel(value);
-        break;
-      default:
-        console.log("Unknown value");
-    }
-    console.log(name, value);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (password === confirm) {
-      try {
-        const res = await server.post("/auth/register", {
-          firstName,
-          lastName,
-          email,
-          username,
-          password,
-          tel,
-        });
-        setToken(res.data.token);
-      } catch (er) {
-        console.log(er.response);
-      }
-    }
-  };
+const Register = (props) => {
+  const {
+    style,
+    type: [type, setType],
+  } = props;
+  const {
+    handleChange,
+    handleShow,
+    handleSubmit,
+    firstName,
+    lastName,
+    loading,
+    email,
+    username,
+    password,
+    tel,
+    show,
+    confirm,
+  } = RegisterF(props);
   return (
     <form className="Register" style={style && style} onSubmit={handleSubmit}>
       <Font variant="h1">Register</Font>
@@ -80,7 +38,7 @@ const Register = ({
         name="firstName"
         type="text"
         required
-        placeholder="First Name"
+        label="First Name"
         variant="standard"
         color="primary"
         variant="standard"
@@ -91,7 +49,7 @@ const Register = ({
         name="lastName"
         type="text"
         required
-        placeholder="Last Name"
+        label="Last Name"
         variant="standard"
         color="primary"
         variant="standard"
@@ -102,7 +60,7 @@ const Register = ({
         name="email"
         type="text"
         required
-        placeholder="Email"
+        label="Email"
         variant="standard"
         color="primary"
         variant="standard"
@@ -113,7 +71,7 @@ const Register = ({
         name="username"
         type="text"
         required
-        placeholder="Username"
+        label="Username"
         variant="standard"
         color="primary"
         variant="standard"
@@ -122,31 +80,57 @@ const Register = ({
       />
       <TextField
         name="password"
-        type="password"
+        type={show ? "text" : "password"}
         required
-        placeholder="Password"
+        label="Password"
         variant="standard"
         color="primary"
         variant="standard"
         onChange={handleChange}
         value={password}
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton
+                aria-label="toggle password visibility"
+                onClick={handleShow}
+                edge="end"
+              >
+                {!show ? <Visibility /> : <VisibilityOff />}
+              </IconButton>
+            </InputAdornment>
+          ),
+        }}
       />
       <TextField
         name="confirm"
-        type="password"
+        type={show ? "text" : "password"}
         required
-        placeholder="Confirm Password"
+        label="Confirm Password"
         variant="standard"
         color="primary"
         variant="standard"
         onChange={handleChange}
         value={confirm}
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton
+                aria-label="toggle password visibility"
+                onClick={handleShow}
+                edge="end"
+              >
+                {!show ? <Visibility /> : <VisibilityOff />}
+              </IconButton>
+            </InputAdornment>
+          ),
+        }}
       />
       <TextField
         name="tel"
         type="tel"
         required
-        placeholder="Phone #"
+        label="Phone #"
         variant="standard"
         color="primary"
         variant="standard"

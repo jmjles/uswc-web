@@ -1,21 +1,53 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 .Register {
-  margin: 0 auto;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  overflow: hidden;
+  padding: 20px;
   max-width: 300px;
-  display: flex;
-  flex-direction: column;
   background-color: $darkBackground;
   color: #fff;
-  border-radius: 5px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 20px;
-  input {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  animation: forwards 1s fadeIn;
+  input,
+  textarea {
     color: #fff;
   }
-  button {
-    margin: 20px 0;
+  .MuiInputAdornment-positionEnd button{
+    margin-bottom: initial;
+    color: $bud;
+  }
+  label {
+    display: flex;
+    margin-left: 0px;
+    margin-right: auto;
+  }
+  label.MuiFormLabel-root {
+    color: darkgray;
+  }
+  label.Mui-focused {
+    color: $bud;
+  }
+  .MuiInput-root {
+    margin-bottom: 10px;
+  }
+  .MuiSelect-select,
+  .MuiSelect-icon {
+    color: #fff;
+  }
+  button{
+    margin-bottom: 20px;
   }
   b {
     cursor: pointer;

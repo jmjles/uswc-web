@@ -144,11 +144,12 @@ const EditEpisode = ({ e, modal, handleShow, refresh, series = [] }) => {
     try {
       event.preventDefault();
       if (step === 3) {
-        setLoading(true)
+        setLoading(true);
         const duration = hours * 60 * 60 + minutes * 60 + 1 * seconds;
         const formData = new FormData();
         if (title !== e.title) formData.append("title", title);
-        if (shortDesc !== e.short_desc) formData.append("short_desc", shortDesc);
+        if (shortDesc !== e.short_desc)
+          formData.append("short_desc", shortDesc);
         if (longDesc !== e.long_desc) formData.append("long_desc", longDesc);
         if (duration !== e.duration) formData.append("duration", duration);
 
@@ -170,9 +171,10 @@ const EditEpisode = ({ e, modal, handleShow, refresh, series = [] }) => {
         if (startDate !== e.startDate) formData.append("startDate", startDate);
         if (endDate !== e.endDate) formData.append("endDate", endDate);
 
-        if (Array.toString(e.tags) !== Array.toString(tags))
+        if (e.tags.toString() !== tags.toString())
           tags.forEach((t) => formData.append("tags", t));
-        if (Array.toString(genres) !== Array.toString(e.genres))
+
+        if (e.genres.toString() !== genres.toString())
           genres.forEach((g) => formData.append("genres", g));
 
         formData.append("id", e._id);
@@ -238,7 +240,7 @@ const EditEpisode = ({ e, modal, handleShow, refresh, series = [] }) => {
     setLoading(false);
     setStep(1);
   };
-  
+
   const commonFields = { step: [step, setStep], handleChange, handleSubmit };
   return (
     <Modal

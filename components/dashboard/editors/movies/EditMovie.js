@@ -1,5 +1,5 @@
 import { Backdrop, Fade, Modal } from "@material-ui/core";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { server } from "../../../../util/axios";
 import MovieForm1 from "./MovieForm1";
 import MovieForm2 from "./MovieForm2";
@@ -163,15 +163,14 @@ const EditMovie = ({ m, modal, handleShow, refresh }) => {
           genres.forEach((g) => formData.append("genres", g));
 
         formData.append("id", m._id);
-        await server.put("/video", formData, {
+        await server().put("/video", formData, {
           headers: { "Content-Type": "multipart/form-data" },
         });
-
         setLoading(false);
         await refresh();
         setShow(true);
         setCreated(true);
-        setTimeout(() => handleShow(Reset), 3000);
+        setTimeout(handleShow, 3000);
       } else {
         setStep(step + 1);
       }
@@ -183,7 +182,47 @@ const EditMovie = ({ m, modal, handleShow, refresh }) => {
     }
   };
 
+  useEffect(() => {
+    setTitle(m.title || "");
+    setShortDesc(m.short_desc || "");
+    setLongDesc(m.long_desc || "");
+    setLanguage(m.language || "");
+    setSubscription(m.subscription || false);
+    setFile("");
+    setThumbnail("");
+    setTrick("");
+    setTags(m.tags || []);
+    setTag("");
+    setGenres(m.genres || []);
+    setGenre("");
+
+    setReleaseDate(m.releaseDate || " ");
+    setDateAdded(m.dateAdded || " ");
+    setStartDate(m.startDate || " ");
+    setEndDate(m.endDate || " ");
+
+    setHours(Math.floor(m.duration / 60 / 60));
+    setMinutes(
+      Math.floor((m.duration - Math.floor(m.duration / 60 / 60) * 60 * 60) / 60)
+    );
+    setSeconds(
+      m.duration -
+        Math.floor(m.duration / 60 / 60) -
+        Math.floor(
+          Math.floor(
+            (m.duration - Math.floor(m.duration / 60 / 60) * 60 * 60) / 60
+          ) * 60
+        )
+    );
+    if (!modal) {
+      setCreated(false);
+      setShow(false);
+      setLoading(false);
+      setStep(1);
+    }
+  }, [m, modal]);
   const Reset = () => {
+    handleShow();
     setTitle(m.title || "");
     setShortDesc(m.short_desc || "");
     setLongDesc(m.long_desc || "");
@@ -226,7 +265,7 @@ const EditMovie = ({ m, modal, handleShow, refresh }) => {
   return (
     <Modal
       open={modal}
-      onClose={() => handleShow(Reset)}
+      onClose={Reset}
       closeAfterTransition
       BackdropComponent={Backdrop}
       BackdropProps={{ timeout: 500 }}

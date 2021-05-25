@@ -6,10 +6,8 @@ import EditMovie from "./EditMovie";
 const MovieItem = ({ movie = {}, refresh }) => {
   const [modal, setModal] = useState(false);
   const [modal2, setModal2] = useState(false);
-  const handleShow = (Reset) => {
-    setModal(!modal);
-    if (modal) Reset();
-  };
+  const handleShow = () => setModal(!modal);
+
   const handleDeleteShow = () => {
     setModal2(!modal2);
   };

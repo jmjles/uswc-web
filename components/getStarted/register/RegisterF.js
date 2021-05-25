@@ -46,7 +46,7 @@ const RegisterF = (props) => {
     e.preventDefault();
     if (password === confirm) {
       try {
-        const res = await server.post("/auth/register", {
+        const res = await server().post("/auth/register", {
           firstName,
           lastName,
           email,

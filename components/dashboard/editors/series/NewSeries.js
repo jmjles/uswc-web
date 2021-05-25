@@ -3,7 +3,7 @@ import { server } from "../../../../util/axios";
 import SeriesForm1 from "./SeriesForm1";
 import SeriesForm2 from "./SeriesForm2";
 
-const NewSeries = ({refresh}) => {
+const NewSeries = ({ refresh }) => {
   const [title, setTitle] = useState("");
   const [shortDesc, setShortDesc] = useState("");
   const [longDesc, setLongDesc] = useState("");
@@ -45,7 +45,7 @@ const NewSeries = ({refresh}) => {
       setGenre("");
     }
   };
-  const Reset = () =>{
+  const Reset = () => {
     setTitle("");
     setShortDesc("");
     setLongDesc("");
@@ -65,7 +65,7 @@ const NewSeries = ({refresh}) => {
     setShow(false);
     setLoading(false);
     setStep(1);
-  }
+  };
   const handleChange = ({ target: { name, value, files } }) => {
     if (show) setShow(false);
     switch (name) {
@@ -127,7 +127,7 @@ const NewSeries = ({refresh}) => {
         tags.forEach((t) => formData.append("tags", t));
         genres.forEach((g) => formData.append("genres", g));
 
-        await server.post("/video/series", formData, {
+        await server().post("/video/series", formData, {
           headers: { "Content-Type": "multipart/form-data" },
         });
 

@@ -14,7 +14,7 @@ const DeleteCategory = ({ modal, handleShow, categoryId, refresh }) => {
   const handleDelete = async () => {
     try {
       console.log(categoryId);
-      await server.delete(`/video/category/${categoryId}`);
+      await server().delete(`/video/category/${categoryId}`);
       await refresh();
     } catch (er) {
       console.log(er);

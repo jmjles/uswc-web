@@ -14,8 +14,8 @@ const VideoTimeline = ({ ep: [ep, setEp], series }) => {
   }, [ep, series]);
   return (
     <Grid container className="TimeLine" justify="space-around">
-      {vids.map((vid) => (
-        <Grid item xs={3}>
+      {vids.map((vid, i) => (
+        <Grid item xs={3} key={i}>
           <Video ep={[ep, setEp]} vid={vid} series={series} />
         </Grid>
       ))}

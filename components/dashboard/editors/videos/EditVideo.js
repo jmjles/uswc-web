@@ -1,5 +1,5 @@
 import { Backdrop, Fade, Modal } from "@material-ui/core";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { server } from "../../../../util/axios";
 import VideoForm1 from "./VideoForm1";
 import VideoForm2 from "./VideoForm2";
@@ -164,7 +164,7 @@ const EditVideo = ({ v, modal, handleShow, refresh }) => {
 
         formData.append("id", v._id);
 
-        await server.put("/video", formData, {
+        await server().put("/video", formData, {
           headers: { "Content-Type": "multipart/form-data" },
         });
 
@@ -172,7 +172,7 @@ const EditVideo = ({ v, modal, handleShow, refresh }) => {
         await refresh();
         setShow(true);
         setCreated(true);
-        setTimeout(() => handleShow(Reset), 3000);
+        setTimeout(handleShow, 3000);
       } else {
         setStep(step + 1);
       }
@@ -183,8 +183,47 @@ const EditVideo = ({ v, modal, handleShow, refresh }) => {
       console.log(er);
     }
   };
+  useEffect(() => {
+    setTitle(v.title || "");
+    setShortDesc(v.short_desc || "");
+    setLongDesc(v.long_desc || "");
+    setLanguage(v.language || "");
+    setSubscription(v.subscription || false);
+    setFile("");
+    setThumbnail("");
+    setTrick("");
+    setTags(v.tags || []);
+    setTag("");
+    setGenres(v.genres || []);
+    setGenre("");
 
+    setReleaseDate(v.releaseDate || " ");
+    setDateAdded(v.dateAdded || " ");
+    setStartDate(v.startDate || " ");
+    setEndDate(v.endDate || " ");
+
+    setHours(Math.floor(v.duration / 60 / 60));
+    setMinutes(
+      Math.floor((v.duration - Math.floor(v.duration / 60 / 60) * 60 * 60) / 60)
+    );
+    setSeconds(
+      v.duration -
+        Math.floor(v.duration / 60 / 60) -
+        Math.floor(
+          Math.floor(
+            (v.duration - Math.floor(v.duration / 60 / 60) * 60 * 60) / 60
+          ) * 60
+        )
+    );
+    if (!modal) {
+      setCreated(false);
+      setShow(false);
+      setLoading(false);
+      setStep(1);
+    }
+  }, [v, modal]);
   const Reset = () => {
+    handleShow();
     setTitle(v.title || "");
     setShortDesc(v.short_desc || "");
     setLongDesc(v.long_desc || "");
@@ -230,7 +269,7 @@ const EditVideo = ({ v, modal, handleShow, refresh }) => {
   return (
     <Modal
       open={modal}
-      onClose={() => handleShow(Reset)}
+      onClose={Reset}
       closeAfterTransition
       BackdropComponent={Backdrop}
       BackdropProps={{ timeout: 500 }}

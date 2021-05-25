@@ -3,17 +3,20 @@ import { CircularProgress, createStyles } from "@material-ui/core";
 import Featured from "../components/videos/Featured";
 import Content from "../layout/Content";
 import React from "react";
-const browse = ({ list, videoLoading }) => {
+const browse = ({ videos, videoLoading }) => {
   return (
     <Content title="Browse" className="Browse">
       <div style={!videoLoading ? style.hidden : style.progress}>
         <CircularProgress size={50} />
       </div>
-      {list.map((entry) => {
-        if (entry.title === "Featured") {
-          return <Featured videos={entry.videos} />;
+      {videos.map((entry) => {
+        if (entry.media.length === 0) return null;
+        else if (entry.name === "FEATURED") {
+          return <Featured videos={entry.media} key={entry._id} />;
         } else {
-          return <Category title={entry.title} videos={entry.videos} />;
+          return (
+            <Category title={entry.name} videos={entry.media} key={entry._id} />
+          );
         }
       })}
     </Content>

@@ -31,10 +31,10 @@ const EditorDashboardF = () => {
   const handleFetchError = () => setFetchError((prev) => !prev);
   //* Series
 
-  const getSeries = async ({ init }) => {
+  const getSeries = async (init = false) => {
     try {
       if (!l && !init) handleLoading();
-      const s = await server("/video/series");
+      const s = await server()("/video/series");
       setS(s.data);
       if (l && !init) handleLoading();
     } catch (er) {
@@ -45,10 +45,10 @@ const EditorDashboardF = () => {
   };
 
   //* Media
-  const getVideos = async ({ init }) => {
+  const getVideos = async (init = false) => {
     try {
       if (!l && !init) handleLoading();
-      const m = await server("/video");
+      const m = await server()("/video/all");
       setM(m.data);
       if (l && !init) handleLoading();
     } catch (er) {
@@ -60,10 +60,10 @@ const EditorDashboardF = () => {
 
   //* Categories
 
-  const getCategories = async ({ init }) => {
+  const getCategories = async (init = false) => {
     try {
       if (!l && !init) handleLoading();
-      const c = await server("/video/category");
+      const c = await server()("/video/category");
       setC(c.data);
       if (l && !init) handleLoading();
     } catch (er) {
@@ -86,9 +86,9 @@ const EditorDashboardF = () => {
     const getAll = async () => {
       try {
         handleLoading();
-        await getSeries({ init: true });
-        await getVideos({ init: true });
-        await getCategories({ init: true });
+        await getSeries(true);
+        await getVideos(true);
+        await getCategories(true);
         handleLoading();
       } catch (er) {
         console.log(er);

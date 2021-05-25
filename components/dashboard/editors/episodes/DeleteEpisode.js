@@ -13,7 +13,7 @@ import { server } from "../../../../util/axios";
 const DeleteEpisode = ({ modal, handleShow, episodeId, refresh }) => {
   const handleDelete = async () => {
     try {
-      await server.delete(`/video/${episodeId}`);
+      await server().delete(`/video/${episodeId}`);
       await refresh();
     } catch (er) {
       console.log(er);

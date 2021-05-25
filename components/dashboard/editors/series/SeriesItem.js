@@ -4,15 +4,12 @@ import React, { useState } from "react";
 import DeleteSeries from "./DeleteSeries";
 import EditSeries from "./EditSeries";
 const SeriesItem = ({ series = {}, refresh }) => {
-    const [modal, setModal] = useState(false);
-    const [modal2, setModal2] = useState(false);
-    const handleShow = (Reset) => {
-      setModal(!modal);
-      if (modal) Reset();
-    };
-    const handleDeleteShow = () => {
-      setModal2(!modal2);
-    };
+  const [modal, setModal] = useState(false);
+  const [modal2, setModal2] = useState(false);
+  const handleShow = () => setModal(!modal);
+  const handleDeleteShow = () => {
+    setModal2(!modal2);
+  };
   return (
     <Grid item>
       <Grid

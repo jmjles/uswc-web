@@ -7,10 +7,8 @@ import EditCategory from "./EditCategory";
 const CategoryItem = ({ category, refresh }) => {
   const [modal, setModal] = useState(false);
   const [modal2, setModal2] = useState(false);
-  const handleShow = (Reset) => {
-    if (modal) Reset();
-    setModal(!modal);
-  };
+  const handleShow = () => setModal(!modal);
+
   const handleDeleteShow = () => {
     setModal2(!modal2);
   };

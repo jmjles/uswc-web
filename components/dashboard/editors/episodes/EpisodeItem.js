@@ -7,10 +7,8 @@ import EditEpisode from "./EditEpisode";
 const EpisodeItem = ({ episode = {}, refresh, series }) => {
   const [modal, setModal] = useState(false);
   const [modal2, setModal2] = useState(false);
-  const handleShow = (Reset) => {
-    setModal(!modal);
-    if (modal) Reset();
-  };
+  const handleShow = () => setModal(!modal);
+
   const handleDeleteShow = () => {
     setModal2(!modal2);
   };

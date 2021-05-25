@@ -45,11 +45,15 @@ const Menu = ({ user: [user, s] }) => {
         </Link>
       </Grid>
       <Grid item className="TabletMenu">
-        <Link href="/swag">
-          <Button color="primary" size="large">
-            <Font variant="button">Swag</Font>
-          </Button>
-        </Link>
+        <Button
+          color="primary"
+          size="large"
+          component="a"
+          href="https://www.etsy.com/shop/USWC"
+          target="blank"
+        >
+          <Font variant="button">Swag</Font>
+        </Button>
       </Grid>
       <Grid item className="TabletMenu">
         <Link href="/blog">

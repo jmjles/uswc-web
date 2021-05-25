@@ -4,10 +4,10 @@ const Video = ({ vid, ep: [ep, setEp], series }) => {
   const router = useRouter();
   const handleClick = (place) => {
     if (place === "Previously") {
-      router.push(`/watch/${series[ep - 1].resource_key}`);
+      router.push(`/watch/${series[ep - 1]._id}`);
       setEp(ep - 1);
     } else {
-      router.push(`/watch/${series[ep + 1].resource_key}`);
+      router.push(`/watch/${series[ep + 1]._id}`);
       setEp(ep + 1);
     }
   };
@@ -18,13 +18,14 @@ const Video = ({ vid, ep: [ep, setEp], series }) => {
           <Font>{vid.placement}</Font>
           <img
             className="VideoImg"
-            src={vid.pictures.sizes[5].link}
+            src={vid.thumbnail}
             onClick={
-              vid.placement !== "Now Playing" &&
-              (() => handleClick(vid.placement))
+              vid.placement !== "Now Playing"
+                ? () => handleClick(vid.placement)
+                : undefined
             }
           />
-          <Font>{vid.name}</Font>
+          <Font>{vid.title}</Font>
         </>
       )}
     </div>

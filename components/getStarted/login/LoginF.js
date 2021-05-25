@@ -26,7 +26,7 @@ const LoginF = (props) => {
     e.preventDefault();
     try {
       setLoading(true);
-      const res = await server.post("/auth/login", { username, password });
+      const res = await server().post("/auth/login", { username, password });
       setLoading(false);
       localStorage.setItem("TOKEN", res.data.token);
       props.user[1](res.data.user);
@@ -34,7 +34,6 @@ const LoginF = (props) => {
       setError(true);
       setLoading(false);
       console.log(er);
-      console.log("in");
     }
   };
   return {

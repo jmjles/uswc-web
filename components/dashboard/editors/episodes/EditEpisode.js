@@ -1,5 +1,5 @@
 import { Backdrop, Fade, Modal } from "@material-ui/core";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { server } from "../../../../util/axios";
 import EpisodeForm1 from "./EpisodeForm1";
 import EpisodeForm2 from "./EpisodeForm2";
@@ -179,7 +179,7 @@ const EditEpisode = ({ e, modal, handleShow, refresh, series = [] }) => {
 
         formData.append("id", e._id);
 
-        await server.put("/video", formData, {
+        await server().put("/video", formData, {
           headers: { "Content-Type": "multipart/form-data" },
         });
 
@@ -187,7 +187,7 @@ const EditEpisode = ({ e, modal, handleShow, refresh, series = [] }) => {
         await refresh();
         setShow(true);
         setCreated(true);
-        setTimeout(() => handleShow(Reset), 3000);
+        setTimeout(handleShow, 3000);
       } else {
         setStep(step + 1);
       }
@@ -198,8 +198,50 @@ const EditEpisode = ({ e, modal, handleShow, refresh, series = [] }) => {
       console.log(er);
     }
   };
+  useEffect(() => {
+    setTitle(e.title || "");
+    setShortDesc(e.short_desc || "");
+    setLongDesc(e.long_desc || "");
+    setLanguage(e.language || "");
+    setSubscription(e.subscription || false);
+    setFile("");
+    setThumbnail("");
+    setTrick("");
+    setSeriesId(e.seriesId || "");
+    setTags(e.tags || []);
+    setTag("");
+    setGenres(e.genres || []);
+    setGenre("");
+    setSeason(e.season || "");
+    setEpisode(e.episode || "");
 
+    setReleaseDate(e.releaseDate || " ");
+    setDateAdded(e.dateAdded || " ");
+    setStartDate(e.startDate || " ");
+    setEndDate(e.endDate || " ");
+
+    setHours(Math.floor(e.duration / 60 / 60));
+    setMinutes(
+      Math.floor((e.duration - Math.floor(e.duration / 60 / 60) * 60 * 60) / 60)
+    );
+    setSeconds(
+      e.duration -
+        Math.floor(e.duration / 60 / 60) -
+        Math.floor(
+          Math.floor(
+            (e.duration - Math.floor(e.duration / 60 / 60) * 60 * 60) / 60
+          ) * 60
+        )
+    );
+    if (!modal) {
+      setCreated(false);
+      setShow(false);
+      setLoading(false);
+      setStep(1);
+    }
+  }, [e, modal]);
   const Reset = () => {
+    handleShow();
     setTitle(e.title || "");
     setShortDesc(e.short_desc || "");
     setLongDesc(e.long_desc || "");
@@ -245,7 +287,7 @@ const EditEpisode = ({ e, modal, handleShow, refresh, series = [] }) => {
   return (
     <Modal
       open={modal}
-      onClose={() => handleShow(Reset)}
+      onClose={Reset}
       closeAfterTransition
       BackdropComponent={Backdrop}
       BackdropProps={{ timeout: 500 }}

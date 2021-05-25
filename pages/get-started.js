@@ -6,11 +6,13 @@ import Content from "../layout/Content";
 
 const getStarted = (props) => {
   const { type, handleType, setType, handleUser } = GetStartedF(props);
-  handleUser
+  handleUser;
   return (
     <Content className="GetStarted" title="Get Started">
       <section style={type !== "none" ? styles.hidden : {}}>
-        <Font variant="h1">Get started with U.S. Weed Channel</Font>
+        <Font variant="h1">
+          Click register to subscribe with U.S. Weed Channel
+        </Font>
         <div className="buttonContainer">
           <Button
             variant="contained"

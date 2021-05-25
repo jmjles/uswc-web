@@ -146,7 +146,7 @@ const NewVideo = ({ refresh }) => {
         tags.forEach((t) => formData.append("tags", t));
         genres.forEach((g) => formData.append("genres", g));
 
-        await server.post("/video", formData, {
+        await server().post("/video", formData, {
           headers: { "Content-Type": "multipart/form-data" },
         });
 

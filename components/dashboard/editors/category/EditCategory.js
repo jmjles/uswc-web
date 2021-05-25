@@ -1,5 +1,5 @@
 import { Backdrop, Fade, Modal } from "@material-ui/core";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { createQuery, getTagsAndOp } from "../../../../util";
 import { server } from "../../../../util/axios";
 import CategoryForm from "./CategoryForm";
@@ -52,7 +52,21 @@ const EditCategory = ({ category, modal, handleShow, refresh }) => {
       setTag("");
     }
   };
+  useEffect(() => {
+    setName(category.name || "");
+    setTags(getTagsAndOp(category.query).tags);
+    setTag("");
+    setOrder(category.order || "");
+    setOperator(getTagsAndOp(category.query).operator);
+    if (!modal) {
+      setShow(false);
+      setLoading(false);
+      setStep(1);
+      setCreated(false);
+    }
+  }, [category, modal]);
   const Reset = () => {
+    handleShow();
     setName(category.name || "");
     setTags(getTagsAndOp(category.query).tags);
     setTag("");
@@ -81,7 +95,7 @@ const EditCategory = ({ category, modal, handleShow, refresh }) => {
           setLoading(false);
           setShow(true);
           setCreated(true);
-          setTimeout(()=>handleShow(Reset), 3000);
+          setTimeout(handleShow, 3000);
         }
       } else {
         setStep(step + 1);
@@ -101,7 +115,7 @@ const EditCategory = ({ category, modal, handleShow, refresh }) => {
   return (
     <Modal
       open={modal}
-      onClose={() => handleShow(Reset)}
+      onClose={Reset}
       closeAfterTransition
       BackdropComponent={Backdrop}
       BackdropProps={{ timeout: 500 }}

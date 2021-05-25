@@ -165,7 +165,7 @@ const NewEpisode = ({ series = [], refresh }) => {
     try {
       e.preventDefault();
       if (step === 3) {
-        setLoading(true)
+        setLoading(true);
         const duration = hours * 60 * 60 + minutes * 60 + 1 * seconds;
         const formData = new FormData();
         formData.append("title", title);
@@ -189,7 +189,7 @@ const NewEpisode = ({ series = [], refresh }) => {
         tags.forEach((t) => formData.append("tags", t));
         genres.forEach((g) => formData.append("genres", g));
 
-        await server.post("/video", formData, {
+        await server().post("/video", formData, {
           headers: { "Content-Type": "multipart/form-data" },
         });
 

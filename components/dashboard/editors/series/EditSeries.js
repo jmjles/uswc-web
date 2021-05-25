@@ -1,5 +1,5 @@
 import { Backdrop, Fade, Modal } from "@material-ui/core";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { server } from "../../../../util/axios";
 import SeriesForm1 from "./SeriesForm1";
 import SeriesForm2 from "./SeriesForm2";
@@ -118,7 +118,7 @@ const EditSeries = ({ s, modal, handleShow, refresh }) => {
           genres.forEach((g) => formData.append("genres", g));
 
         formData.append("id", s._id);
-        await server.put("/video/series", formData, {
+        await server().put("/video/series", formData, {
           headers: { "Content-Type": "multipart/form-data" },
         });
 
@@ -126,7 +126,7 @@ const EditSeries = ({ s, modal, handleShow, refresh }) => {
         await refresh();
         setShow(true);
         setCreated(true);
-        setTimeout(() => handleShow(Reset), 3000);
+        setTimeout(handleShow, 3000);
       } else {
         setStep(step + 1);
       }
@@ -137,8 +137,33 @@ const EditSeries = ({ s, modal, handleShow, refresh }) => {
       console.log(er);
     }
   };
+  
+  useEffect(() => {
+    setTitle(s.title || "");
+    setShortDesc(s.short_desc || "");
+    setLongDesc(s.long_desc || "");
+    setSubscription(s.subscription || false);
+    setThumbnail("");
+    setTags(s.tags || []);
+    setTag("");
+    setGenres(s.genres || []);
+    setGenre("");
+
+    setReleaseDate(s.releaseDate || " ");
+    setDateAdded(s.dateAdded || " ");
+    setStartDate(s.startDate || " ");
+    setEndDate(s.endDate || " ");
+
+    if (!modal) {
+      setCreated(false);
+      setShow(false);
+      setLoading(false);
+      setStep(1);
+    }
+  }, [s, modal]);
 
   const Reset = () => {
+    handleShow();
     setTitle(s.title || "");
     setShortDesc(s.short_desc || "");
     setLongDesc(s.long_desc || "");
@@ -165,7 +190,7 @@ const EditSeries = ({ s, modal, handleShow, refresh }) => {
   return (
     <Modal
       open={modal}
-      onClose={() => handleShow(Reset)}
+      onClose={Reset}
       closeAfterTransition
       BackdropComponent={Backdrop}
       BackdropProps={{ timeout: 500 }}

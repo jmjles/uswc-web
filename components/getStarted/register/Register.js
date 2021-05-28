@@ -27,7 +27,7 @@ const Register = (props) => {
     tel,
     show,
     confirm,
-  } = RegisterF(props);
+  } = RegisterF({ ...props });
   return (
     <form className="Register" style={style && style} onSubmit={handleSubmit}>
       <Font variant="h1">Register</Font>

@@ -2,6 +2,9 @@ import { useState } from "react";
 import { server } from "../../../util/axios";
 
 const RegisterF = (props) => {
+  const {
+    user: [user, setUser],
+  } = props;
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -54,8 +57,8 @@ const RegisterF = (props) => {
           password,
           tel,
         });
+        setUser(res.data.user);
         localStorage.setItem("TOKEN", res.data.token);
-
       } catch (er) {
         console.log(er.response);
       }

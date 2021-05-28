@@ -69,28 +69,30 @@ const Watch = ({ videoLoading, videos, user: [user] }) => {
   return (
     <Content title="Watch" className="Watch">
       <CircularProgress style={!videoLoading ? style.hidden : {}} />
-      {!user.sub && (
-        <Modal open={true} className="Modal">
-          <>
-            <Grid container direction="column" alignItems="center">
-              <Grid item>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={() => router.push("/get-started")}
-                >
-                  Subscribe Now!
-                </Button>
+      {selected.subscription &&
+        !user.sub &&
+        (!user.type || user.type === "viewer") && (
+          <Modal open={true} className="Modal">
+            <>
+              <Grid container direction="column" alignItems="center">
+                <Grid item>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => router.push("/start")}
+                  >
+                    Subscribe Now!
+                  </Button>
+                </Grid>
               </Grid>
-            </Grid>
-          </>
-        </Modal>
-      )}
+            </>
+          </Modal>
+        )}
       {!videoLoading && (
         <div>
           <div className="PlayerContainer">
             {selected.subscription &&
-            !user.subscribed &&
+            !user.sub &&
             (!user.type || user.type === "viewer") ? (
               <img src={selected.thumbnail} />
             ) : (

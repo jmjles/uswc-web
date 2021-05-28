@@ -22,7 +22,7 @@ const Menu = ({ user: [user, s] }) => {
         </Link>
       </Grid>
       <Grid item className="TabletMenu">
-        <Link href="/get-started">
+        <Link href="/start">
           <Button color="primary" size="large" style={user._id && style.hidden}>
             <Font variant="button">Get Started</Font>
           </Button>
